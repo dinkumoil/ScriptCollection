@@ -2,7 +2,46 @@
 
 This repository is a collection of (maybe) useful scripts I wrote over the years. It will be extended from time to time.
 
+
 # The scripts at a glance
+
+## CSV viewer
+
+The purpose of this script is to be included in the Windows Explorer context menu for CSV files. It loads CSV files with MS Excel, formats all columns as text and fits the column widths to their content. Greatly simplifies viewing of CSV files.
+
+
+## Cut
+
+This is a small script that provides the functionality of the UNIX `cut` tool with plain Windows Batch script.
+
+The script accepts the following command line switches:
+
+* /b x  -  Set the starting line (default: the file's first line)
+* /e x  -  Set the terminating line (default: the file's last line)
+* /n    -  Show line numbers (default: off)
+
+
+## EventConsumer
+
+These scripts demonstrate the usage of WMI permanent event consumers. The script `NewProcessCreationEventMonitorInstaller.vbs` installs such an event consumer that monitors the system for the execution of a new _cmd.exe_ process. When this happens the handler script `NewProcessCreationEventHandler.vbs` is executed.
+
+The noticeable benefit of WMI **permanent** event consumers is that they have to be installed only once, after that they are integrated into the system permanently.
+
+
+## HeaderFiles
+
+This is a collection of VBScript classes, utility functions and OS constants.
+
+* `ADO.vbs`  -  ADO constants
+* `WMI.vbs`  -  WMI constants
+* `Utils.vbs`  -  Utility functions (e.g. QuickSort)
+* `ClassDatabaseFileDSN.vbs`  -  Working with databases using a file DSN
+* `ClassDatabaseSqlServer.vbs`  -  Working with MS SQL Server databases using OLEDB provider
+* `ClassFileNameMatch.vbs`  -  Pattern matching for file and path name wildcards
+* `ClassFileVersionInfo.vbs`  -  Retrieve file version informations from EXE and DLL files
+* `ClassIniFile.vbs`  -  Working with INI files (read, write, change)
+* `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, Kölner Phonetic, Levenshtein distance)
+
 
 ## LoadAllNppPlugins
 
@@ -26,3 +65,8 @@ The script outputs status messages during its work. To prevent that these messag
 `cscript /nologo [Path-to-Script]LoadAllNppPlugins.vbs [Arguments]`
 
 If the console Windows Script Host is set as default the script can be started with a double-click.
+
+
+## SetSQLServerFirewallRules
+
+The main script in this folder (`SetSqlFwRules.vbs`) sets the required rules in the Windows firewall to make MS SQL Server reachable for networked clients.
