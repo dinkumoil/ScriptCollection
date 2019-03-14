@@ -28,6 +28,14 @@ These scripts demonstrate the usage of WMI permanent event consumers. The script
 The noticeable benefit of WMI **permanent** event consumers is that they have to be installed only once, after that they are integrated into the system permanently.
 
 
+## GetSysTimes
+
+This folder contains two Batch scripts with inline VBScript:
+
+* Retrieving the last system boot up time.
+* Retrieving the system uptime.
+
+
 ## HeaderFiles
 
 This is a collection of VBScript classes, utility functions and OS constants.
@@ -70,3 +78,8 @@ If the console Windows Script Host is set as default the script can be started w
 ## SetSQLServerFirewallRules
 
 The main script in this folder (`SetSqlFwRules.vbs`) sets the required rules in the Windows firewall to make MS SQL Server reachable for networked clients.
+
+
+## WMIPing
+
+This script imitates the _PING_ command using a WMI class. It provides detailed error messages and sets a return code according to success or failure of the command. 
