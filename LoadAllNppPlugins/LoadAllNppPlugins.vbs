@@ -88,9 +88,7 @@ Call objFSO.CreateFolder(strGupUnzipDirPath)
 '-------------------------------------------------------------------------------
 ' Extract plugin list from DLL file and parse it
 '-------------------------------------------------------------------------------
-Call ExtractPluginList(strPluginListDllPath, strPluginListJsonPath)
-
-If Not objFSO.FileExists(strPluginListJsonPath) Then
+If Not ExtractPluginList(strPluginListDllPath, strPluginListJsonPath) Then
   WScript.Echo "Extraction of plugin list from DLL file failed."
   WScript.Quit
 End If
@@ -241,7 +239,7 @@ End Sub
 ' Extract plugin list from DLL file
 '===============================================================================
 
-Sub ExtractPluginList(ByRef strDllFilePath, ByRef strPluginListJsonPath)
+Function ExtractPluginList(ByRef strDllFilePath, ByRef strPluginListJsonPath)
   Dim objWshShell
 
   Set objWshShell = CreateObject("WScript.Shell")
@@ -259,7 +257,9 @@ Sub ExtractPluginList(ByRef strDllFilePath, ByRef strPluginListJsonPath)
                     "k@FreeLibrary $$:1", _
                   0, _
                   True
-End Sub
+                  
+  ExtractPluginList = (objFSO.FileExists(strPluginListJsonPath))
+End Function
 
 
 '===============================================================================
