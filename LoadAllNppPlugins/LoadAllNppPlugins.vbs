@@ -200,7 +200,7 @@ End Function
 
 
 '===============================================================================
-' Download file
+' Unzip file
 '===============================================================================
 
 Sub UnzipFile(ByRef strZipFilePath, ByRef strFileNameToUnzip, ByRef strDestPath)
