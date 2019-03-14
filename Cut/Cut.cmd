@@ -1,13 +1,13 @@
 @echo off & setlocal
 
-::Initialisierung
+::Initialization
 set /a "StartLine=0"
 set /a "StopLine=0"
 set /a "ShowLineNumbers=0"
 set "InFile="
 
 
-::Kommandozeilenargumente einlesen
+::Retrieve command line arguments
 :ParseArgsLoop
   if /i "%~1" equ "/b" (
     set /a "StartLine=%~2" & shift
