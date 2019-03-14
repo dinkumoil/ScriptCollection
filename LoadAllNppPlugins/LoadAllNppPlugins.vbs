@@ -90,6 +90,11 @@ Call objFSO.CreateFolder(strGupUnzipDirPath)
 '-------------------------------------------------------------------------------
 Call ExtractPluginList(strPluginListDllPath, strPluginListJsonPath)
 
+If Not objFSO.FileExists(strPluginListJsonPath) Then
+  WScript.Echo "Extraction of plugin list from DLL file failed."
+  WScript.Quit
+End If
+
 strJsonFileContent = ReadUTF8File(strPluginListJsonPath)
 objJsonFile.LoadFromString(strJsonFileContent)
 
