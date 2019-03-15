@@ -28,9 +28,9 @@ Include ".\include\ClassJsonFile.vbs"
 
 'Variables declaration
 Dim objJsonFile, objFSO, objWshShell
-Dim strNppDirPath, strNppPath, strGupPath, strWaeDirPath, strWaePath, strWaeDownloadPath
+Dim strNppDirPath, strNppPath, strGupPath, strWaeDirPath, strWaeDownloadPath, strWaePath
 Dim strPluginListDllPath, strPluginListJsonPath, strGupUnzipDirPath
-Dim intHTTPStatusCode, strJsonFileContent, strPrevWorkingDir, arrPlugins, intCnt
+Dim intHTTPStatusCode, strPrevWorkingDir, arrPlugins, intCnt
 
 
 'Variables initalization
@@ -88,13 +88,24 @@ Call objFSO.CreateFolder(strGupUnzipDirPath)
 '-------------------------------------------------------------------------------
 ' Extract plugin list from DLL file and parse it
 '-------------------------------------------------------------------------------
-If Not ExtractPluginList(strPluginListDllPath, strPluginListJsonPath) Then
-  WScript.Echo "Extraction of plugin list from DLL file failed."
+If strPluginListDllPath <> "" Then
+  If Not ExtractPluginList(strPluginListDllPath, strPluginListJsonPath) Then
+    WScript.Echo "Extraction of plugin list from DLL file failed."
+    WScript.Quit
+  End If
+
+ElseIf Not objFSO.FileExists(strPluginListJsonPath) Then
+  WScript.Echo "JSON file with plugin list not found."
   WScript.Quit
 End If
 
-strJsonFileContent = ReadUTF8File(strPluginListJsonPath)
-objJsonFile.LoadFromString(strJsonFileContent)
+'Ensure Windows EOL style of JSON file
+Call ConvertUTF8EOLFormat(strPluginListJsonPath, vbCrLf)
+
+If Not objJsonFile.LoadFromString(ReadUTF8File(strPluginListJsonPath)) Then
+  WScript.Echo "Failed to parse JSON file with plugin list."
+  WScript.Quit
+End If
 
 arrPlugins = objJsonFile.Content.Item("npp-plugins")
 
@@ -128,7 +139,7 @@ objWshShell.CurrentDirectory = strPrevWorkingDir
 '-------------------------------------------------------------------------------
 ' Cleanup
 '-------------------------------------------------------------------------------
-If objFSO.FileExists(strPluginListJsonPath) Then
+If strPluginListDllPath <> "" And objFSO.FileExists(strPluginListJsonPath) Then
   Call objFSO.DeleteFile(strPluginListJsonPath)
 End If
 
@@ -164,6 +175,11 @@ Sub ParseCommandLine()
     strPluginListDllPath = objFSO.GetAbsolutePathName(colArgs.Named.Item("L"))
   End If
 
+  If colArgs.Named.Exists("J") Then
+    strPluginListJsonPath = objFSO.GetAbsolutePathName(colArgs.Named.Item("J"))
+    strPluginListDllPath  = ""
+  End If
+
   If colArgs.Named.Exists("P") Then
     strGupUnzipDirPath = objFSO.GetAbsolutePathName(colArgs.Named.Item("P"))
   End If
@@ -183,7 +199,7 @@ Function DownloadFile(ByRef strURL, ByRef strDownloadPath, ByRef intStatusCode)
   objXMLHTTP.open "GET", strURL, false
   objXMLHTTP.send()
 
-  intStatusCode = objXMLHTTP.Status
+  intStatusCode = objXMLHTTP.status
 
   If intStatusCode <> 200 Then
     DownloadFile = False
