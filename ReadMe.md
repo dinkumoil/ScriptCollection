@@ -63,7 +63,7 @@ This is a collection of VBScript classes, utility functions and OS constants.
 * `ClassFileNameMatch.vbs`  -  Pattern matching for file and path name wildcards
 * `ClassFileVersionInfo.vbs`  -  Retrieve file version informations from EXE and DLL files
 * `ClassIniFile.vbs`  -  Working with INI files (read, write, change)
-* `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, Kölner Phonetic, Levenshtein distance)
+* `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, KÃ¶lner Phonetic, Levenshtein distance)
 
 
 ## LoadAllNppPlugins
