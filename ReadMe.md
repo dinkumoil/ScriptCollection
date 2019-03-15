@@ -74,7 +74,7 @@ The script can also be used on a system without an installed copy of _Notepad++_
 
 To extract the plugin list (a JSON document) from its DLL file, the script uses an external helper program named _WinApiExec_. With this tool it is possible to perform Win32 API calls from within a script. If this tool is not present in the intended directory the script will download and unpack its ZIP file.
 
-The script accepts the following commandline parameters:
+The script accepts the following command line parameters:
 
 * /N:"Path"  -  Set path of the installation directory of Notepad++ (default: `C:\Program Files (x86)\Notepad++`)
 * /G:"Path"  -  Set full path to _Gup.exe_ (default: `C:\Program Files (x86)\Notepad++\updater\GUP.exe`)
@@ -83,6 +83,8 @@ The script accepts the following commandline parameters:
 * /P:"Path"  -  Set path of the directory _Gup.exe_ should unpack the plugins to (default: `<Script-path>\Plugins`)
 
 The directory where _Gup.exe_ unpacks the plugin packages will be created automatically.
+
+The options `/L` and `/J` are exclusive, the one occuring later is taken into account. Also the option `/N` influences the paths for _Gup.exe_ and the plugin list's DLL file. If you want to set non-standard paths for one or both of them **and** a non-standard path for Notepad++ provide the `/G` and `/L` options **after** the `/N` option.
 
 The script outputs status messages during its work. To prevent that these messages get displayed with message boxes (which have to be closed one by one) it should be started with the following command line:
 
