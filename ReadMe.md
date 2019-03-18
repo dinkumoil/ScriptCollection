@@ -109,7 +109,7 @@ The normal use case for the script is to be run in interactive mode. The script 
 
 If you run the script with the following command line you can use it in an automated way. **Please note:** If you want to migrate a local or hybrid installation you have to run the script with administrative user rights.
 
-`MigrateNppPlugins.cmd "Source Path" "Destination Path" "Installation Type"`
+**`MigrateNppPlugins.cmd "Source Path" "Destination Path" "Installation Type"`**
 
 * `Source Path`  -  Path to source plugin directory
 * `Destination Path`  -  Path to destination plugin directory
