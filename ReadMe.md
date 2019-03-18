@@ -76,11 +76,11 @@ To extract the plugin list (a JSON document) from its DLL file, the script uses 
 
 The script accepts the following command line parameters:
 
-* /N:"Path"  -  Set path of the installation directory of Notepad++ (default: `C:\Program Files (x86)\Notepad++`)
-* /G:"Path"  -  Set full path to _Gup.exe_ (default: `C:\Program Files (x86)\Notepad++\updater\GUP.exe`)
-* /L:"Path"  -  Set full path to DLL file with plugin list (default: `C:\Program Files (x86)\Notepad++\plugins\config\nppPluginList.dll`)
-* /J:"Path"  -  Set full path to JSON file with plugin list (default: `%TEMP%\nppPluginList.json`)
-* /P:"Path"  -  Set path of the directory _Gup.exe_ should unpack the plugins to (default: `<Script-path>\Plugins`)
+* `/N:"Path"`  -  Set path of the installation directory of Notepad++ (default: `C:\Program Files (x86)\Notepad++`)
+* `/G:"Path"`  -  Set full path to _Gup.exe_ (default: `C:\Program Files (x86)\Notepad++\updater\GUP.exe`)
+* `/L:"Path"`  -  Set full path to DLL file with plugin list (default: `C:\Program Files (x86)\Notepad++\plugins\config\nppPluginList.dll`)
+* `/J:"Path"`  -  Set full path to JSON file with plugin list (default: `%TEMP%\nppPluginList.json`)
+* `/P:"Path"`  -  Set path of the directory _Gup.exe_ should unpack the plugins to (default: `<Script-path>\Plugins`)
 
 The directory where _Gup.exe_ unpacks the plugin packages will be created automatically.
 
@@ -139,11 +139,11 @@ If you run the script with the following command line you can use it in an autom
 </br>
 
 | Version   | Local installation | Hybrid installation  | Portable installation  |
-|----------:|:------------------ |:-------------------- |:---------------------- |
+|----------:|:------------------ |:--------------------:|:---------------------- |
 | <= v7.5.9 | `Local`            | `Hybrid`             | `Portable`             |
-|    v7.6   | `Localv7.6`        | `Hybrid`             | `Portable`             |
-|    v7.6.1 | `Localv7.6.1`      | `Hybrid`             | `Portable`             |
-|    v7.6.2 | `Localv7.6.1`      | `Hybrid`             | `Portable`             |
+|    v7.6   | `Localv7.6`        |        n/a           | `Portable`             |
+|    v7.6.1 | `Localv7.6.1`      |        n/a           | `Portable`             |
+|    v7.6.2 | `Localv7.6.1`      |        n/a           | `Portable`             |
 
 
 ## SetSQLServerFirewallRules
