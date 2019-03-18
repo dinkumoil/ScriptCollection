@@ -1,0 +1,23 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\DeleteADS]
+@="Alternate Data Streams löschen"
+"Icon"="\"C:\\Program Files\\Delete ADS\\DeleteADS.ico\""
+
+[HKEY_CLASSES_ROOT\*\shell\DeleteADS\command]
+@="\"C:\\Program Files\\Delete ADS\\streams.exe\" -d -nobanner \"%1\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\DeleteADS]
+@="Alternate Data Streams löschen"
+"Icon"="\"C:\\Program Files\\Delete ADS\\DeleteADS.ico\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\DeleteADS\command]
+@="\"C:\\Program Files\\Delete ADS\\streams.exe\" -s -d -nobanner \"%1\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\DeleteADS]
+@="Alternate Data Streams löschen"
+"Icon"="\"C:\\Program Files\\Delete ADS\\DeleteADS.ico\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\DeleteADS\command]
+@="\"C:\\Program Files\\Delete ADS\\streams.exe\" -s -d -nobanner \"%V\""
+

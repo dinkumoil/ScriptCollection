@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\UpdateExplorerIcons]
+@="Explorer Icons aktualisieren"
+"Icon"="C:\\Program Files (x86)\\UpdateExplorerIcons\\UpdateExplorerIcons.ico,0"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\UpdateExplorerIcons\Command]
+@="\"C:\\Program Files (x86)\\UpdateExplorerIcons\\HStart.exe\" /noconsole \"C:\\Program Files (x86)\\UpdateExplorerIcons\\UpdateExplorerIcons.cmd\""
+

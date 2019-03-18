@@ -1,0 +1,9 @@
+1. Download SysInternals streams.exe from here:
+
+     https://docs.microsoft.com/en-us/sysinternals/downloads/streams
+
+
+2. Unpack the ZIP archive.
+
+
+3. Create folder "%ProgramFiles%\Delete ADS" and copy streams.exe to that folder.

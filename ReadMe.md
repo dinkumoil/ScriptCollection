@@ -28,6 +28,19 @@ These scripts demonstrate the usage of WMI permanent event consumers. The script
 The noticeable benefit of WMI **permanent** event consumers is that they have to be installed only once, after that they are integrated into the system permanently.
 
 
+## ExplorerContextMenu
+
+This directory contains three Windows Explorer context menu extensions:
+
+* `DeleteADS`  -  Delete NTFS alternate data streams. Can be used to delete the Zone Identifier of files downloaded from the internet to avoid annoying warnings when opening them.
+* `OpenConsoleHere`  -  Open a normal or a console with admin rights in the current directory/the directory of the current file.
+* `UpdateExplorerIcons`  -  Force Windows Explorer to reload the data of all desktop and file list icons.
+
+To install the context menu extensions double-click the _install.cmd_ files in the respective directory.
+
+For _DeleteADS_ you will need to download the _Streams.exe_ tool by SysInternals. For _UpdateExplorerIcons_ you will need to download the _WinApiExec.exe_ tool and the _HStart.exe_ tool. See the equally named _txt_ files for download links and installation instructions.
+
+
 ## FileSelector
 
 This script provides a file selector written in native Windows Batch script. You can browse your hard disk(s) in a console window and select a file or folder. It is also possible to create and delete files and folders by means of a _Tools_ menu.

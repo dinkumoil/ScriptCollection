@@ -1,0 +1,10 @@
+1. Download WinApiExec.exe from here:
+
+     https://rammichael.com/winapiexec
+
+
+2. Unpack the ZIP archive.
+
+
+3. Create folder "%ProgramFiles(x86)%\UpdateExplorerIcons" and copy winapiexec.exe
+   to that folder.
