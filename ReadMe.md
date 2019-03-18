@@ -101,7 +101,7 @@ With this script it is possible to migrate all Notepad++ plugins to the new plug
 * portable installations of Notepad++ up to v7.6.2.
 * hybrid installations of Notepad++ up to v7.5.9 (plugin DLL files in the user profile).
 
-The script not only migrates the plugin DLL file itself to the new location but also companion files and folders, e.g. files required for the plugin to work properly as well as help and documentation files, if there are any. This works **only** if the files/folders are named **exactly** like the plugin's DLL file.
+The script not only migrates the plugin DLL file itself to the new location but also companion files and folders, i.e. files required for the plugin to work properly as well as help and documentation files, if there are any. This works **only** if the files/folders are named **exactly** like the plugin's DLL file.
 
 **Please note:** There are plugins out there that store their companion files under `<Notepad++-install-dir>\plugins\<plugin-name>` and when trying to load them they use a hard-coded path. That means they will not find these files anymore after the script has moved them to the new location. In this case Notepad++ respectively the plugin will show some kind of error message during start up or the plugin simply will not work as desired, e.g. showing its help file will fail. You should try then to move the companion files under suspicion back to their previous location.
 
