@@ -115,8 +115,9 @@ If you run the script with the following command line you can use it in an autom
 * `Destination Path`  -  Path to destination plugin directory
 * `Installation Type`  -  Can be one of `Local`, `Localv7.6`, `Localv7.6.1`, `Hybrid`, `Portable`
 
-</br>
+
 `Source Path` depends on the installation type and version number of the old Notepad++ installation:
+</br>
 
 | Version   | Local installation                 | Hybrid installation           | Portable installation         |
 |----------:|:---------------------------------- |:-----------------------------:|:----------------------------- |
@@ -125,15 +126,17 @@ If you run the script with the following command line you can use it in an autom
 |    v7.6.1 | `%ProgramData%\Notepad++\plugins`  |             n/a               | `<Npp-install-path>\plugins`  |
 |    v7.6.2 | `%ProgramData%\Notepad++\plugins`  |             n/a               | `<Npp-install-path>\plugins`  |
 
-</br>
+
 `Destination Path` depends on the installation type of the new Notepad++ v7.6.3 (or above) installation:
+</br>
 
 | Local installation     | Portable installation      |
 |:---------------------- |:-------------------------- |
 |`%ProgramFiles%\plugins`|`<Npp-install-path>\plugins`|
 
-</br>
+
 `Installation Type` depends on the installation type and version number of the old Notepad++ installation:
+</br>
 
 | Version   | Local installation | Hybrid installation  | Portable installation  |
 |----------:|:------------------ |:-------------------- |:---------------------- |
