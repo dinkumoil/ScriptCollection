@@ -1,0 +1,29 @@
+<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <OutputPath>$(MSBuildProjectDirectory)</OutputPath>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <Processor>$(PROCESSOR_ARCHITECTURE)</Processor>
+    <ProgramFiles32>$(ProgramFiles)</ProgramFiles32>
+    <ProgramFiles32 Condition="'$(Processor)' != 'x86'">$(ProgramFiles) (x86)</ProgramFiles32>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SourceCode Include="$(AssemblyName).cs" />
+    <ReferencedAssemblies Include="$(ProgramFiles32)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\Microsoft.SqlServer.Management.UserSettings.dll" />
+  </ItemGroup>
+
+  <Target Name="Clean" >
+    <Delete Files="$(OutputPath)\$(AssemblyName).exe" />
+  </Target>
+  
+  <Target Name="Build" Inputs="@(SourceCode)" Outputs="$(OutputPath)\$(AssemblyName).exe">
+    <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')" />
+    <Csc Sources="@(SourceCode)" References="@(ReferencedAssemblies)" TargetType="exe" OutputAssembly="$(OutputPath)\$(AssemblyName).exe" />
+  </Target>
+
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build" />
+</Project>
