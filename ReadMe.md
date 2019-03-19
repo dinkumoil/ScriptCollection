@@ -187,7 +187,7 @@ The program in its current version is only suitable for SQL Server 2014. But tha
 * In the file _SSMSLoginTool.cs_ the method _CurrentDomain_AssemblyResolve_ contains the paths to two assemblies the program uses. These files come together with SQL Server, thus they are located in its installation directory. Please adapt these paths to your version of SQL Server.
 * The file _SSMSLoginTool.proj_ contains in the XML node _\\\\ItemGroup\ReferencedAssemblies_ the path to one of the assemblies mentioned above, too. It has to be adapted to your version of SQL Server as well.
 
-To build the program start the script _Build.cmd_. It searches the newest available version of _MSBuild_, sets the _TargetFramework_ to the highest available on your machine and compiles the program with the C# compiler included in the newest available .NET installation.
+To build the program start the script _Build.cmd_. It searches the newest available version of _MSBuild_, sets _ToolsVersion_ and _TargetFramework_ to the highest available on your machine and thus compiles the program with the C# compiler included in the newest available .NET installation for the .NET framework with the highest version number available.
 
 For instructions on how to use the program start it without any parameters or with the parameter _/?_ or _-?_.
 

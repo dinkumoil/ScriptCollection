@@ -282,8 +282,8 @@ internal class Program
       case ERR_NO_SERVERNAME:
         Console.WriteLine(@"Error!");
         Console.WriteLine(@"Please provide the name of the SQL Server whose entries you want to delete from");
-        Console.WriteLine(@"settings file. You can also provide the switch /all to delete the entries of all");
-        Console.WriteLine(@"servers.");
+        Console.WriteLine(@"the settings file. You can also provide the switch /all to delete the entries of");
+        Console.WriteLine(@"all servers.");
         goto default;
       
       case ERR_SHOW_HELP: 
