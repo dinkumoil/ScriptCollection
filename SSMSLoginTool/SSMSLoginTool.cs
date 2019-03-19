@@ -84,7 +84,7 @@ internal class Program
     // List of server entries to delete
     List<ServerConnectionItem> toProcess = new List<ServerConnectionItem>();
 
-    // Iterate over server list of server types in settings file
+    // Iterate over list of server types in settings file
     // The list elements are key-value pairs
     foreach (var pair in settings.SSMS.ConnectionOptions.ServerTypes)
     {
@@ -311,7 +311,7 @@ internal class Program
   }
   
   
-  // This is an event handler that will be called when an assebly is about to be
+  // This is an event handler that will be called when an assembly is about to be
   // loaded. It's the only way to load the assembly SqlWorkbench.Interfaces. The
   // assembly Microsoft.SqlServer.Management.UserSettings is added as well so it
   // has not to be stored in the same directory like the program itself.
@@ -336,7 +336,7 @@ internal class Program
   }
   
   
-  // Retrieve the path to the program files directory for 32 bit programs
+  // Retrieve the path to Program Files directory for 32 bit programs
   private static string GetProgramFilesDir()
   {
     string programFilesDir = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
