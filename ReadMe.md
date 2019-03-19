@@ -180,7 +180,7 @@ SQL Server Management Studio is a great tool but it has an annoying bug in the l
 
 It is possible to overcome this problem by deleting the buggy entries from the settings file of SQL Server Management Studio. But this file contains a serialized .NET class which is not human readable nor editable with a simple text editor. A .NET assembly containing the SSMS settings file class is required to do that.
 
-Fortunately I found a piece of code on StackOverflow that solved the problem and was able to extend it to a rather comfortably to use console program. The program can be used to read or delete all server entries in the settings file or only the entry of a certain server.
+Fortunately I found a piece of code on StackOverflow that solved the problem. I was able to extend it to a rather comfortably to use console program. The program can be used to read or delete all server entries in the settings file or only the entry of a certain server.
 
 The program in its current version is only suitable for SQL Server 2014. But that is only because of some paths that have to be changed for other SQL Server versions. In the past I used the program in conjunction with SQL Server 2008 R2 as well. The following changes have to be made to adapt it to another version of SQL Server:
 
