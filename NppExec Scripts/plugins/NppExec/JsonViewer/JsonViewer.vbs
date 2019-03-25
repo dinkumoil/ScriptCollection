@@ -1,45 +1,43 @@
-'Alle Variablen müssen vor der ersten Verwendung mit Dim deklariert werden
 Option Explicit
 
 
-'Externen Code in das Script einbinden
+'Include external code modules
 Include ".\IO.vbs"
 Include ".\ClassJsonFile.vbs"
 
 
 '===============================================================================
-' Hauptprogramm
+' Main program
 '===============================================================================
 
-'Variablendeklaration
+'Variables declaration
 Dim objJsonFile
 
-'Initialisierung
+'Variables initialization
 Set objJsonFile = New clsJsonFile
 
-'Abbruch wenn zu wenig Parameter übergeben wurden
+'Break on missing parameter
 If WScript.Arguments.Count < 1 Then
-  WScript.StdErr.WriteLine "Fehlender Parameter"
+  WScript.StdErr.WriteLine "Missing parameter"
   WScript.Quit 1
 End If
 
-'Abbruch wenn beim Einlesen der JSON-Datei oder
-'der Erstellung des Datenmodells ein Fehler auftritt
+'Break if reading the JSON file or createing the data model fails
 If Not objJsonFile.LoadFromFile(WScript.Arguments(0), AsAnsi) Then
-  WScript.StdErr.WriteLine "Ungültiges Dateiformat"
+  WScript.StdErr.WriteLine "Invalid file format"
   WScript.Quit 2
 End If
 
-'Aus dem Datenmodell eine formatierte Textdarstellung erzeugen und ausgeben
+'Turn data model of JSON file into a well formatted text and send it to StdOut
 WScript.StdOut.WriteLine objJsonFile.ToString(True)
 
-'Beenden
+'Quit
 WScript.Quit 0
 
 
 
 '===============================================================================
-' Routine zum Einbinden von externem Code
+' Routine for including external code modules
 '===============================================================================
 
 Sub Include(ByRef strFilePath)
