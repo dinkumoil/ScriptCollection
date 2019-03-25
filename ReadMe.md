@@ -159,6 +159,23 @@ If you run the script with the following command line you can use it in an autom
 |    v7.6.2 | `Localv7.6.1`      |        n/a           | `Portable`             |
 
 
+## NppExec Scripts
+
+This is a collection of scripts for the _NppExec_ plugin for Notepad++. To use them copy the file _npes_saved.txt_ to `%AppData%\Notepad++\plugins\config` where the config files of all your Notepad++ plugins reside.
+
+* `Compile_&_Run`  -  Together with its companion scripts `RUN_XXXX` it turns Notepad++ into a shell for different programming languages (some .NET languages (Visual Basic, C#, JavaScript, J#), C using _TCC_ (Tiny C Compiler), Windows Batch Script, VB Script, PowerShell, HTML Application (HTA), SQL for Microsoft SQL Server, Gnuplot, and Inno Setup). By assigning the `Compile_&_Run` script to a keyboard shortcut via shortcut mapper it is possible to run your code with a single key press. **Please note:** For the .NET languages the script uses the .NET compilers included into every .NET installation, no additional stuff required. For compiling and running C programs you need an external compiler like _Tiny C Compiler_. For SQL scripts you need to have installed at least _SQL Server Command Line Utilities_ to get the _SQLCMD_ tool. For Inno Setup scripts you need to have installed _Inno Setup_.
+* `Launch_32Bit_Console`  -  Starts a 32 bit console window, useful for using on Windows 64 bit versions.
+* `FormatJsonData`  -  This script uses some VB Script helper scripts to convert unformatted JSON data into a readable form. The helper scripts are located in the folder `plugins\NppExec\JSONViewer`. Copy this folder to your Notepad++ installation directory. This may require administrative user rights.
+* `ReverseLines`  -  Select a block of lines and execute this script to revert the order of the selected lines.
+* `DeleteLinesFrom2ndView`  -  Open 2 files with Notepad++ and put them into different views (s.a. `menu View -> Move/Clone Current Document -> Move to Other View`. When executing the script it deletes lines from the 1st view which also appear in the 2nd view.
+* `VirtualSpacesOn`  -  Allows to navigate the cursor into areas of the document with no content.
+* `VirtualSpacesOff`  -  Prevents cursor navigation into areas of the document with no content.
+* `FoldingLinesOn`  -  Turns on marking lines of code folding points.
+* `FoldingLinesOff`  -  Turns off marking lines of code folding points.
+* `TrimTrailingSpace`  -  Deletes space characters at the end of documents's lines.
+* `SearchAsOEM` and `OpenFileAtLine`  -  With the `SearchAsOEM` script it is possible to search in a whole directory structure for a search term that contains characters encoded with the DOS or OEM codepage the Windows console works with. The `OpenFileAtLine` script is able to open the files contained in the search results of `SearchAsOEM`. `OpenFileAtLine` needs an additional Batch Script located in `plugins\NppExec\OpenFileAtLine`. It will be copied together with the helper scripts of `FormatJsonData`. To get a detailed explanation on how to use the `OpenFileAtLine` and `SearchAsOEM` scripts have a look at [this thread at the Notepad++ community forum](https://notepad-plus-plus.org/community/topic/16846/how-to-specify-codepage-when-searching-via-find-in-files).
+
+
 ## SetSQLServerFirewallRules
 
 The main script in this folder (`SetSqlFwRules.vbs`) sets the required rules in the Windows firewall to make MS SQL Server reachable for networked clients.
