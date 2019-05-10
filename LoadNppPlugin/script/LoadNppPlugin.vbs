@@ -236,25 +236,6 @@ End Sub
 
 
 '===============================================================================
-' Remove invalid characters from a file name
-'===============================================================================
-
-Function GetValidFileName(ByVal strFileName)
-  strFileName = Replace(strFileName, "\" , "_")
-  strFileName = Replace(strFileName, "/" , "_")
-  strFileName = Replace(strFileName, ":" , "_")
-  strFileName = Replace(strFileName, "*" , "_")
-  strFileName = Replace(strFileName, "?" , "_")
-  strFileName = Replace(strFileName, """", "_")
-  strFileName = Replace(strFileName, "<" , "_")
-  strFileName = Replace(strFileName, ">" , "_")
-  strFileName = Replace(strFileName, "|" , "_")
-
-  GetValidFileName = strFileName
-End Function
-
-
-'===============================================================================
 ' Surround a string with double quotes
 '===============================================================================
 
