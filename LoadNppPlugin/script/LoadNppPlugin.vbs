@@ -84,6 +84,16 @@ arrPlugins = objJsonFile.Content.Item("npp-plugins")
 '-------------------------------------------------------------------------------
 ' Print list of plugins and prompt user to select one
 '-------------------------------------------------------------------------------
+WScript.Echo "            ******************************************************"
+WScript.Echo "            *                                                    *"
+WScript.Echo "            *         Downloader for Notepad++ plugins           *"
+WScript.Echo "            *                                                    *"
+WScript.Echo "            * Released to the public domain 2019 by Andreas Heim *"
+WScript.Echo "            *                                                    *"
+WScript.Echo "            ******************************************************"
+WScript.Echo
+WScript.Echo
+
 For intCnt = 0 To UBound(arrPlugins)
   strPluginURL  = arrPlugins(intCnt).Item("repository")
   strPluginName = arrPlugins(intCnt).Item("folder-name")
@@ -95,7 +105,7 @@ WScript.Echo
 WScript.Echo
 
 Do While True
-  WScript.StdOut.Write "Select plugin by its number: "
+  WScript.StdOut.Write "Select plugin to download by its number (ENTER to cancel): "
   strInput = WScript.StdIn.ReadLine
 
   If strInput = "" Then CleanupAndQuit
