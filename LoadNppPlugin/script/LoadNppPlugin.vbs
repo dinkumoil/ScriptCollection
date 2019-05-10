@@ -54,7 +54,7 @@ Call ParseCommandline()
 
 
 '-------------------------------------------------------------------------------
-' Delete and recreate unzip directory
+' Create unzip directory if necessary
 '-------------------------------------------------------------------------------
 If Not objFSO.FolderExists(strUnzipDirPath) Then
   Call objFSO.CreateFolder(strUnzipDirPath)
@@ -72,6 +72,7 @@ End If
 'Ensure Windows EOL style of JSON file
 Call ConvertUTF8EOLFormat(strPluginListDownloadPath, vbCrLf)
 
+'Parse JSON data
 If Not objJsonFile.LoadFromString(ReadUTF8File(strPluginListDownloadPath)) Then
   WScript.Echo "Failed to parse JSON file with plugin list."
   CleanupAndQuit
