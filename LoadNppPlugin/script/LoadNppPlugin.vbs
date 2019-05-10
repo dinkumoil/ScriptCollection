@@ -56,12 +56,9 @@ Call ParseCommandline()
 '-------------------------------------------------------------------------------
 ' Delete and recreate unzip directory
 '-------------------------------------------------------------------------------
-If objFSO.FolderExists(strUnzipDirPath) Then
-  Call objFSO.DeleteFolder(strUnzipDirPath)
-  WScript.Sleep 1000
+If Not objFSO.FolderExists(strUnzipDirPath) Then
+  Call objFSO.CreateFolder(strUnzipDirPath)
 End If
-
-Call objFSO.CreateFolder(strUnzipDirPath)
 
 
 '-------------------------------------------------------------------------------
@@ -215,7 +212,8 @@ Sub UnzipFile(ByRef strZipFilePath, ByRef strDstFolder)
   objShell.Run Quote(str7ZipPath) & " " & _
                  "x " & Quote(strZipFilePath) & " " & _
                  "-o" & Quote(strDstFolder) & " " & _
-                 "-r", _
+                 "-r" & " " & _
+                 "-aoa", _
                0, _
                True
 End Sub
