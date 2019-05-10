@@ -106,6 +106,21 @@ The script outputs status messages during its work. To prevent that these messag
 If the console Windows Script Host is set as default the script can be started with a double-click.
 
 
+## LoadNppPlugin
+
+With this script you can download a specific Notepad++ plugin package and unpack the ZIP file to your hard disk. Actually it's a wrapper for a VBS script provided for convenience purposes.
+
+The script displays a numbered list of all plugins available through the latest Notepad++ plugins list on GitHub. The user can select one of these plugins by entering its number to download and unpack the plugin to the hard disk.
+
+It is possible to provide the architecture of Notepad++ (32 bit or 64 bit) and, if required, a proxy address as arguments. It is also possible to append the architecture of Notepad++ to the filename of the script, e.g. `LoadNppPlugin_x86` for 32 bit Notepad++ and `LoadNppPlugin_x64` for 64 bit Notepad++. **Please note:** Command line parameters have a higher precedence than a file name appendix.
+
+The script accepts the following command line parameters:
+
+* `x86, x64` - Specifies the architecture of your Notepad++ installation. Use `x86` for a 32 bit installation and `x64` for 64 bit. The default is `x86`.
+* `/p` or `-p` - Allows to specify a proxy. `<proxy URL>` has to be the proxy address using the following schema: <br><br>`[protocol://][user:password@]proxyhost[:port]`<br><br>Example: `http://foo:bar@192.172.10.1:3128`<br><br>Since this argument is handed over to CURL (which actually performs the download) refer to the CURL documentation for further information.
+* `/?` or `-?` - Displays a help message.
+
+
 ## MigrateNppPlugins
 
 With this script it is possible to migrate all Notepad++ plugins to the new plugin directory structure required by Notepad++ v7.6.3 and above. It should be run **after** upgrading Notepad++ to that version. The script is able to migrate plugins of
