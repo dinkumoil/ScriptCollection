@@ -75,7 +75,7 @@ Class clsIniFile
         strSection = colMatches(0).SubMatches(0)
         Call AddSection(strSection)
       ElseIf strSection <> "" Then
-        objRegEx.Pattern = "^([^;].+)=(.*)$"
+        objRegEx.Pattern = "^([^;]+)=(.*)$"
         Set colMatches   = objRegEx.Execute(strLine)
 
         If colMatches.Count > 0 Then
