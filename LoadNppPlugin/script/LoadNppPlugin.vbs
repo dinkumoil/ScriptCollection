@@ -96,7 +96,7 @@ WScript.Echo
 
 For intCnt = 0 To UBound(arrPlugins)
   strPluginURL  = arrPlugins(intCnt).Item("repository")
-  strPluginName = arrPlugins(intCnt).Item("folder-name")
+  strPluginName = arrPlugins(intCnt).Item("display-name")
 
   WScript.Echo "[ " & String(Len(CStr(UBound(arrPlugins))) - Len(CStr(intCnt)), " ") & intCnt & " ]  " & strPluginName
 Next
