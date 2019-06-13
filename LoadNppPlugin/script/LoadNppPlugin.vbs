@@ -159,10 +159,10 @@ Call CleanupAndQuit()
 
 Sub ParseCommandline
   Dim intCnt
-  
+
   strPluginDownloadURL = PLUGIN_LIST_X86_URL
   strProxyURL          = ""
-  
+
   For intCnt = 0 To WScript.Arguments.Unnamed.Count - 1
     If StrComp(WScript.Arguments.Unnamed(intCnt), "x86", vbTextCompare) = 0 Then
       strPluginDownloadURL = PLUGIN_LIST_X86_URL
@@ -171,7 +171,7 @@ Sub ParseCommandline
       strPluginDownloadURL = PLUGIN_LIST_X64_URL
     End If
   Next
-  
+
   If WScript.Arguments.Named.Exists("P") Then
     strProxyURL = WScript.Arguments.Named("P")
   End If
@@ -186,7 +186,7 @@ Function DownloadFile(ByRef strFileURL, ByRef strDstPath, ByRef intStatusCode)
   Dim objShell, strProxyArg
 
   Set objShell = CreateObject("WScript.Shell")
-  
+
   If strProxyURL <> "" Then
     strProxyArg = "-x " & strProxyURL
   Else
