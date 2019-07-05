@@ -29,7 +29,7 @@ Dim objFSO, objWshShell, objJsonFile
 Dim strBinDirPath, str7ZipPath, strCurlPath, strPluginDownloadURL, strProxyURL
 Dim strPluginListDownloadPath, strPluginDownloadDirPath, strPluginDownloadPath
 Dim strUnzipDirPath, strUnzipPath
-Dim strPluginURL, strPluginName
+Dim strPluginURL, strPluginName, intPluginNameLength
 Dim intHTTPStatusCode, arrPlugins, intCnt, strInput, intInput
 
 
@@ -57,7 +57,7 @@ Call ParseCommandline()
 ' Create unzip directory if necessary
 '-------------------------------------------------------------------------------
 If Not objFSO.FolderExists(strUnzipDirPath) Then
-  Call objFSO.CreateFolder(strUnzipDirPath)
+  Call ForceDirectories(strUnzipDirPath)
 End If
 
 
@@ -94,11 +94,25 @@ WScript.Echo "            ******************************************************
 WScript.Echo
 WScript.Echo
 
+'Retrieve length of longest plugin name
+intPluginNameLength = 0
+
+For intCnt = 0 To UBound(arrPlugins)
+  strPluginName = arrPlugins(intCnt).Item("display-name")
+
+  If Len(strPluginName) > intPluginNameLength Then
+    intPluginNameLength = Len(strPluginName)
+  End If
+Next
+
+'Print plugin list (number, plugin name, plugin URL)
 For intCnt = 0 To UBound(arrPlugins)
   strPluginURL  = arrPlugins(intCnt).Item("repository")
   strPluginName = arrPlugins(intCnt).Item("display-name")
 
-  WScript.Echo "[ " & String(Len(CStr(UBound(arrPlugins))) - Len(CStr(intCnt)), " ") & intCnt & " ]  " & strPluginName
+  WScript.Echo "[ " & String(Len(CStr(UBound(arrPlugins))) - Len(CStr(intCnt)), " ") & intCnt & " ]  " & _
+               strPluginName & String(intPluginNameLength - Len(strPluginName) + 2, " ") & _
+               strPluginURL
 Next
 
 WScript.Echo
@@ -166,9 +180,11 @@ Sub ParseCommandline
   For intCnt = 0 To WScript.Arguments.Unnamed.Count - 1
     If StrComp(WScript.Arguments.Unnamed(intCnt), "x86", vbTextCompare) = 0 Then
       strPluginDownloadURL = PLUGIN_LIST_X86_URL
-
+      strUnzipDirPath      = objFSO.BuildPath(strUnzipDirPath, "x86")
+      
     ElseIf StrComp(WScript.Arguments.Unnamed(intCnt), "x64", vbTextCompare) = 0 Then
       strPluginDownloadURL = PLUGIN_LIST_X64_URL
+      strUnzipDirPath      = objFSO.BuildPath(strUnzipDirPath, "x64")
     End If
   Next
 
@@ -228,6 +244,35 @@ Sub UnzipFile(ByRef strZipFilePath, ByRef strDstFolder)
                0, _
                True
 End Sub
+
+
+'===============================================================================
+' Create a nested directory structure
+'===============================================================================
+
+Function ForceDirectories(ByRef strPath)
+  Dim objFSO, strPartPath, strAbsPath, arrAbsPath, intCnt
+
+  Set objFSO  = CreateObject("Scripting.FileSystemObject")
+
+  strAbsPath  = objFSO.GetAbsolutePathName(strPath)
+  arrAbsPath  = Split(strAbsPath, "\")
+  strPartPath = objFSO.BuildPath(arrAbsPath(0), "\")
+
+  If Not objFSO.DriveExists(strPartPath) Then
+    ForceDirectories = False
+  Else
+    For intCnt = 1 To UBound(arrAbsPath)
+      strPartPath = objFSO.BuildPath(strPartPath, arrAbsPath(intCnt))
+
+      If Not objFSO.FolderExists(strPartPath) Then
+        objFSO.CreateFolder(strPartPath)
+      End If
+    Next
+  End If
+
+  ForceDirectories = True
+End Function
 
 
 '===============================================================================
