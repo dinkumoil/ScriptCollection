@@ -247,31 +247,60 @@ End Sub
 
 
 '===============================================================================
-' Create a nested directory structure
+' Create a nested directory structure on local drives and network shares
 '===============================================================================
 
 Function ForceDirectories(ByRef strPath)
-  Dim objFSO, strPartPath, strAbsPath, arrAbsPath, intCnt
+  Dim objFSO, arrAbsPath, strAbsPath, strPartPath, intCnt
 
-  Set objFSO  = CreateObject("Scripting.FileSystemObject")
+  Set objFSO = CreateObject("Scripting.FileSystemObject")
 
-  strAbsPath  = objFSO.GetAbsolutePathName(strPath)
-  arrAbsPath  = Split(strAbsPath, "\")
-  strPartPath = objFSO.BuildPath(arrAbsPath(0), "\")
+  'Retrieve absolute path of input path
+  strAbsPath = objFSO.GetAbsolutePathName(strPath)
+  arrAbsPath = Array()
 
+  'Split path into its parts and store them in an array.
+  'Last part of path is stored in lowest order array element, the path's root
+  'is stored in highest order array element
+  Do
+    'Enlarge array for path parts
+    ReDim Preserve arrAbsPath(UBound(arrAbsPath) + 1)
+
+    'Check if last part of the path is a drive's root dir or if the remaining
+    'path is the path to a network share
+    If objFSO.GetFileName(strAbsPath)  = ""         Or _
+       objFSO.GetDriveName(strAbsPath) = strAbsPath Then
+      'Store path of drive's root dir or path of network share and exit loop
+      arrAbsPath(UBound(arrAbsPath)) = strAbsPath
+      Exit Do
+    Else
+      'Store directory name
+      arrAbsPath(UBound(arrAbsPath)) = objFSO.GetFileName(strAbsPath)
+    End If
+
+    'Discard last part of path
+    strAbsPath = objFSO.GetParentFolderName(strAbsPath)
+  Loop
+
+  'Init with path's root (root dir of drive or path of network share)
+  strPartPath = arrAbsPath(UBound(arrAbsPath))
+
+  'Return failure if the path's root doesn't exist
   If Not objFSO.DriveExists(strPartPath) Then
     ForceDirectories = False
   Else
-    For intCnt = 1 To UBound(arrAbsPath)
+    'Create directories level by level
+    For intCnt = UBound(arrAbsPath) - 1 To 0 Step -1
       strPartPath = objFSO.BuildPath(strPartPath, arrAbsPath(intCnt))
 
       If Not objFSO.FolderExists(strPartPath) Then
         objFSO.CreateFolder(strPartPath)
       End If
     Next
-  End If
 
-  ForceDirectories = True
+    'Return success
+    ForceDirectories = True
+  End If
 End Function
 
 
