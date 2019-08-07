@@ -56,7 +56,7 @@ Function OpenCSVFile(strFileName, strSheetName)
 
   'Read CSV file
   With objActiveSheet.QueryTables.Add("TEXT;" & strFileName, objActiveSheet.Range("A1"))
-    .Name                         = "Vx80 Report"
+    .Name                         = "CSV file"
     .FieldNames                   = False                'First line doesn't contain column headers
     .RowNumbers                   = False                'First column doesn't contain line numbers
     .FillAdjacentFormulas         = False                'Don't update formulars
