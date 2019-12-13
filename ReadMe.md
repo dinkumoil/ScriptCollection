@@ -79,33 +79,6 @@ This is a collection of VBScript classes, utility functions and OS constants.
 * `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, Kölner Phonetic, Levenshtein distance)
 
 
-## LoadAllNppPlugins
-
-This script is able to download and unzip all _Notepad++_ plugin packages that are listed in the official _Notepad++_ plugin list. This list is provided as a DLL file and part of every _Notepad++_ installation since version 7.6. For downloading and unzipping the plugins the script uses the same helper program like _Notepad++_ itself, _Gup.exe_ which is part of every _Notepad++_ installation as well.
-
-The script can also be used on a system without an installed copy of _Notepad++_. In this case it needs at least _Gup_ (its ZIP file can be downloaded [here](https://github.com/notepad-plus-plus/wingup/releases), contains also all other files _Gup.exe_ needs) and the DLL file with the plugin list (its ZIP file can be downloaded [here](https://github.com/notepad-plus-plus/nppPluginList/releases)).
-
-To extract the plugin list (a JSON document) from its DLL file, the script uses an external helper program named _WinApiExec_. With this tool it is possible to perform Win32 API calls from within a script. If this tool is not present in the intended directory the script will download and unpack its ZIP file.
-
-The script accepts the following command line parameters:
-
-* `/N:"Path"`  -  Set path of the installation directory of Notepad++ (default: `C:\Program Files (x86)\Notepad++`)
-* `/G:"Path"`  -  Set full path to _Gup.exe_ (default: `C:\Program Files (x86)\Notepad++\updater\GUP.exe`)
-* `/L:"Path"`  -  Set full path to DLL file with plugin list (default: `C:\Program Files (x86)\Notepad++\plugins\config\nppPluginList.dll`)
-* `/J:"Path"`  -  Set full path to JSON file with plugin list (default: `%TEMP%\nppPluginList.json`)
-* `/P:"Path"`  -  Set path of the directory _Gup.exe_ should unpack the plugins to (default: `<Script-path>\Plugins`)
-
-The directory where _Gup.exe_ unpacks the plugin packages will be created automatically.
-
-The options `/L` and `/J` are exclusive, the one occuring later is taken into account. Also the option `/N` influences the paths for _Gup.exe_ and the plugin list's DLL file. If you want to set non-standard paths for one or both of them **and** a non-standard path for Notepad++ provide the `/G` and `/L` options **after** the `/N` option.
-
-The script outputs status messages during its work. To prevent that these messages get displayed with message boxes (which have to be closed one by one) it should be started with the following command line:
-
-`cscript /nologo [Path-to-Script]LoadAllNppPlugins.vbs [Arguments]`
-
-If the console Windows Script Host is set as default the script can be started with a double-click.
-
-
 ## LoadNppPlugin
 
 With this script you can download a specific Notepad++ plugin package and unpack the ZIP file to your hard disk. Actually it's a wrapper for a VBS script provided for convenience purposes.

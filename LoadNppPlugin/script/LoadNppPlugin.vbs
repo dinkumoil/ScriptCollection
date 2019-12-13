@@ -26,7 +26,7 @@ Include ".\include\ClassJsonFile.vbs"
 
 'Variables declaration
 Dim objFSO, objWshShell, objJsonFile
-Dim strBinDirPath, str7ZipPath, strCurlPath, strPluginDownloadURL, strProxyURL
+Dim strBinDirPath, str7ZipPath, strCurlPath, strPluginListDownloadURL, strProxyURL
 Dim strPluginListDownloadPath, strPluginDownloadDirPath, strPluginDownloadPath
 Dim strUnzipDirPath, strUnzipPath
 Dim strPluginURL, strPluginName, intPluginNameLength
@@ -64,7 +64,7 @@ End If
 '-------------------------------------------------------------------------------
 ' Download plugin list JSON file and parse it
 '-------------------------------------------------------------------------------
-If Not DownloadFile(strPluginDownloadURL, strPluginListDownloadPath, intHTTPStatusCode) Then
+If Not DownloadFile(strPluginListDownloadURL, strPluginListDownloadPath, intHTTPStatusCode) Then
   WScript.Echo "Downloading plugin list failed. Return code: " & intHTTPStatusCode
   CleanupAndQuit
 End If
@@ -174,16 +174,16 @@ Call CleanupAndQuit()
 Sub ParseCommandline
   Dim intCnt
 
-  strPluginDownloadURL = PLUGIN_LIST_X86_URL
+  strPluginListDownloadURL = PLUGIN_LIST_X86_URL
   strProxyURL          = ""
 
   For intCnt = 0 To WScript.Arguments.Unnamed.Count - 1
     If StrComp(WScript.Arguments.Unnamed(intCnt), "x86", vbTextCompare) = 0 Then
-      strPluginDownloadURL = PLUGIN_LIST_X86_URL
+      strPluginListDownloadURL = PLUGIN_LIST_X86_URL
       strUnzipDirPath      = objFSO.BuildPath(strUnzipDirPath, "x86")
-      
+
     ElseIf StrComp(WScript.Arguments.Unnamed(intCnt), "x64", vbTextCompare) = 0 Then
-      strPluginDownloadURL = PLUGIN_LIST_X64_URL
+      strPluginListDownloadURL = PLUGIN_LIST_X64_URL
       strUnzipDirPath      = objFSO.BuildPath(strUnzipDirPath, "x64")
     End If
   Next
@@ -267,7 +267,7 @@ Function ForceDirectories(ByRef strPath)
     ReDim Preserve arrAbsPath(UBound(arrAbsPath) + 1)
 
     'Check if last part of the path is a drive's root dir or if the remaining
-    'path is the path to a network share
+    'path is the path of a network share
     If objFSO.GetFileName(strAbsPath)  = ""         Or _
        objFSO.GetDriveName(strAbsPath) = strAbsPath Then
       'Store path of drive's root dir or path of network share and exit loop
