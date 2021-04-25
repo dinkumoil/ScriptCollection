@@ -77,6 +77,11 @@ This is a collection of scripts for the _NppExec_ plugin for Notepad++ to extend
 These scripts allow to manage plugins for Notepad++. The benefit over using Notepad++'s build in _Plugins Admin_ is that you can always install/update to the plugin versions from the most recent plugins list and that also older versions of Notepad++ prior to v7.6 are supported.
 
 
+## Pascal Development
+
+The file in this directory provides a function list parser for Notepad++ for Pascal and derived languages like _Delphi_ and _Free Pascal_.
+
+
 ## SetSQLServerFirewallRules
 
 Script to set the required rules in the Windows firewall to make MS SQL Server reachable for network clients.
