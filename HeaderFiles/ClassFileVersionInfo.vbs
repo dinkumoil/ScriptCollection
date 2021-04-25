@@ -1,3 +1,15 @@
+'///////////////////////////////////////////////////////////////////////////////
+'
+' Header file for reading version information from *.exe and *.dll files
+'
+' Author: Andreas Heim
+'
+' Required header files (to be included before): None
+'
+'///////////////////////////////////////////////////////////////////////////////
+
+
+
 Const FVICompanyName      = 0
 Const FVIFileDescription  = 1
 Const FVIComments         = 2
@@ -60,7 +72,7 @@ Class clsFileVersionInfo
 
 
   '----------------------------------------------------------------------------
-  'Interne Variablen zurücksetzen
+  'Reset internal variables
   '----------------------------------------------------------------------------
   Private Sub Clear
     strFilePath       = ""
@@ -70,7 +82,7 @@ Class clsFileVersionInfo
 
 
   '----------------------------------------------------------------------------
-  'Liest/Setzt den Pfad der Datei zum Extrahieren von Versionsinformationen
+  'Get/Set path of file to extract version info from
   '----------------------------------------------------------------------------
   Public Property Let FilePath(ByRef strValue)
     strFilePath = objFSO.GetAbsolutePathName(strValue)
@@ -91,7 +103,7 @@ Class clsFileVersionInfo
 
 
   '----------------------------------------------------------------------------
-  'Liest bestimmte Versionsinformationen aus einer Datei
+  'Get certain version info from a file
   '----------------------------------------------------------------------------
   Public Property Get FileVersionInfoTag(intValue)
     FileVersionInfoTag = ""
@@ -105,7 +117,7 @@ Class clsFileVersionInfo
 
 
   '----------------------------------------------------------------------------
-  'Liest die Namen bestimmter Versionsinformationen
+  'Get name of certain version info tag
   '----------------------------------------------------------------------------
   Public Property Get FileVersionInfoTagName(intValue)
     FileVersionInfoTagName = ""
@@ -119,7 +131,7 @@ Class clsFileVersionInfo
 
 
   '----------------------------------------------------------------------------
-  'Liest die Bezeichnung bestimmter Versionsinformationen
+  'Get user friendly name of certain version info tag
   '----------------------------------------------------------------------------
   Public Property Get FileVersionInfoTagFriendlyName(intValue)
     FileVersionInfoTagFriendlyName = ""

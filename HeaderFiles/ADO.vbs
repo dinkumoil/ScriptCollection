@@ -1,4 +1,15 @@
-'http://msdn.microsoft.com/en-us/library/windows/desktop/ms678353(v=vs.85).aspx
+'///////////////////////////////////////////////////////////////////////////////
+'
+' Header file for ADO constants
+'
+' Author: Andreas Heim
+'
+' http://msdn.microsoft.com/en-us/library/windows/desktop/ms678353(v=vs.85).aspx
+'
+' Required header files (to be included before): None
+'
+'///////////////////////////////////////////////////////////////////////////////
+
 
 
 'Connect modes

@@ -1,0 +1,25 @@
+# NppExec Scripts
+
+This is a collection of scripts for the _NppExec_ plugin for Notepad++. To use them copy the file _npes_saved.txt_ to `%AppData%\Notepad++\plugins\config` where the config files of all your Notepad++ plugins reside.
+
+The scripts `NppExecSyntaxHighlighting`, `SortTabs` and `CompareFiles` additionally need the _NppEventExec_ plugin in order to be called automatically. The configuration file for this plugin is `NppEventExec_rules.csv`. Copy this file to the same location like _npes_saved.txt_.
+
+* `NppExecSyntaxHighlighting`  -  Script to be executed by _NppEventExec_ plugin when file _npes_saved.txt_ has been loaded to activate _NppExec_ syntax highlighting and function list.
+* `CompileAndRun`  -  Together with its companion scripts `RUN_XXXX` it turns Notepad++ into a development shell for different programming languages (some .NET languages (Visual Basic, C#, JavaScript, J#), C using _TCC_ (Tiny C Compiler), Windows Batch Script, VB Script, PowerShell, Lua (with _Lua Script_ plugin), HTML Application (HTA), SQL for Microsoft SQL Server, Gnuplot, Inno Setup and JQ). By assigning the `CompileAndRun` script to a keyboard shortcut via shortcut mapper it is possible to run your code with a single key press. **Please note:** For the .NET languages the script uses the .NET compilers included into every .NET installation, no additional stuff required. For compiling and running C programs you need an external compiler like _Tiny C Compiler_. For SQL scripts you need to have installed at least _SQL Server Command Line Utilities_ to get the _SQLCMD_ tool. For Inno Setup scripts you need to have installed _Inno Setup_. For JQ scripts you need to have installed JQ.
+* `Launch_32Bit_Console`  -  Starts a 32 bit console window, useful for using on Windows 64 bit versions.
+* `FormatJsonData`  -  This script uses some VB Script helper scripts to convert unformatted JSON data into a readable form. The helper scripts are located in the folder `plugins\NppExec\JSONViewer`. Copy this folder to your Notepad++ installation directory. This may require administrative user rights.
+* `ReverseLines`  -  Select a block of lines and execute this script to revert the order of the selected lines.
+* `DeleteLinesFrom2ndView`  -  Open 2 files with Notepad++ and put them into different views (s.a. `menu View -> Move/Clone Current Document -> Move to Other View`. When executing the script it deletes lines from the 1st view which also appear in the 2nd view.
+* `CloseAllFilesButCurrent`  -  Closes all files in all views but the currently active one without asking for saving changed files.
+* `SortTabs` -  Sorts tabs per view by file name. This script can be executed by _NppEventExec_ plugin when `NPPN_FILEOPENED` Notepad++ event is fired to sort tabs immediately whenever a file is opened.
+* `SearchAsOEM` and `OpenFileAtLine`  -  With the `SearchAsOEM` script it is possible to search in a whole directory structure for a search term that contains characters encoded with the DOS or OEM codepage the Windows console works with. The `OpenFileAtLine` script is able to open the files contained in the search results of `SearchAsOEM`. `OpenFileAtLine` needs an additional Batch Script located in `plugins\NppExec\OpenFileAtLine`. It will be copied together with the helper scripts of `FormatJsonData`. To get a detailed explanation on how to use the `OpenFileAtLine` and `SearchAsOEM` scripts have a look at [this thread at the Notepad++ community forum](https://notepad-plus-plus.org/community/topic/16846/how-to-specify-codepage-when-searching-via-find-in-files).
+* `ShellExecuteSelection`  -  You can select some text in a document and request Windows Explorer to apply the standard `open` action to it. An executable file will be executed, a script/document will be opened in its standard application and a directory will be opened in an Explorer window.
+* `CompareFiles`  -  Performs a file comparison using the _Compare_ plugin. To use this feature you should read [my comment](https://notepad-plus-plus.org/community/topic/16056/how-to-get-an-external-diff-viewer-with-n-and-the-last-compare-plugin-v2-0-0-0/2) in the Notepad++ community forum.
+* `ReadLongText`  -  Clones current file to second view, scroll down one page and activate synchronous vertical scrolling.
+* `RemoveSearchMarks`  -  Removes text markings that have been set by _Search & Replace_ dialog's _Mark_ feature.
+* `SetRenderingEngineDirect2D` and `SetRenderingEngineDefault`  -  Sets _Scintilla_ rendering engine to Direct2D/default mode.
+* `VirtualSpacesOn`  -  Allows to navigate the cursor into areas of the document with no content.
+* `VirtualSpacesOff`  -  Prevents cursor navigation into areas of the document with no content.
+* `FoldingLinesOn` and `FoldingLinesOff` -  Turns on/off marking lines of code folding points.
+* `ConvertEolOnPasteOn` and `ConvertEolOnPasteOff`  -  Turns on/off conversion of line endings format (EOL) to target document's EOL format when text is pasted.
+* `TrimTrailingSpace`  -  Deletes white space characters at the end of active document's lines.

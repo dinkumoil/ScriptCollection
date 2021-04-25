@@ -1,0 +1,7 @@
+# EventConsumer
+
+The scripts in the subfolders `BatchScript` and `VBScript` demonstrate the usage of WMI permanent event consumers from within Windows batch scripts and VBS scripts. The noticeable benefit of WMI **permanent** event consumers is that they have to be installed only once, afterwards they are integrated into the system permanently.
+
+The script `VBScript\NewProcessCreationEventMonitorInstaller.vbs` installs an event consumer that monitors the system for the execution of a new _cmd.exe_ process. When this happens the handler script `NewProcessCreationEventHandler.vbs` is executed.
+
+The script `BatchScript\LANAdapterStatusChangeEventMonitorInstaller.cmd` installs an event consumer that monitors the system's LAN adapter. **Please Note:** You have to adapt the script to your machine, search for the strings `<Your LAN adapter name like shown in device manager>` and `<Your WLAN PNP DeviceId>` and replace them with the appropriate data. Whenever you plug or unplug the network cable the handler script `LANAdapterStatusChangeEventHandler.vbs` is called (Note: The functionality of this script could also be implemented as a batch script). It activates (network cable unplugged) or deactivates (network cable plugged) the system's WLAN adapter. For this task it uses `devcon.exe` which is included in the _Windows Driver Kit_, _Visual Studio_ and the _Windows SDK for desktop apps_. Just google for `devcon.exe`, you will find Microsoft sites that explain how to get it.

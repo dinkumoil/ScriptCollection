@@ -1,7 +1,16 @@
-'===============================================================================
-' Klasse für fehlertolerante Vergleiche
-' (Phonetischer Vergleich, Ermittlung der Abweichung und kombinierte Methode)
-'===============================================================================
+'///////////////////////////////////////////////////////////////////////////////
+'
+' Header file for fault tolerant comparisons (phonetic comparison using Soundex
+' or Kölner Phonetic (for comparing german phrases), Levenshtein distance and
+' combined methods)
+'
+' Author: Andreas Heim
+'
+' Required header files (to be included before): None
+'
+'///////////////////////////////////////////////////////////////////////////////
+
+
 
 Class clsSimilarity
   '-----------------------------------------------------------------------------

@@ -1,3 +1,15 @@
+'///////////////////////////////////////////////////////////////////////////////
+'
+' Header file for WMI constants
+'
+' Author: Andreas Heim
+'
+' Required header files (to be included before): None
+'
+'///////////////////////////////////////////////////////////////////////////////
+
+
+
 ' WbemImpersonationLevel
 Const wbemImpersonationLevelAnonymous       = 1
 Const wbemImpersonationLevelIdentify        = 2

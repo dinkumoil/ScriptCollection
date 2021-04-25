@@ -1,0 +1,4 @@
+"Event","Enabled?","Name","Regex","Command","Background?"
+NPPN_FILEOPENED,yes,"NppExec syntax highlighting","(?i).*\\plugins\\config\\npes_saved\.txt","NppExecSyntaxHighlighting",yes
+NPPN_FILEOPENED,no,"Compare Files",".*","CompareFiles",yes
+NPPN_FILEOPENED,no,"Sort Tabs",".*","SortTabs",yes

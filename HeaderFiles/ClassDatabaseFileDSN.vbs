@@ -1,10 +1,22 @@
-'===============================================================================
-' Datenbank-Klasse
-'===============================================================================
+'///////////////////////////////////////////////////////////////////////////////
+'
+' Header file for database access via MS OLEDB Provider for ODBC Driver using
+' a file DSN
+'
+' Author: Andreas Heim
+'
+' Required header files (to be included before):
+'   - ADO.vbs
+'   - IO.vbs
+'   - ClassIniFile.vbs
+'
+'///////////////////////////////////////////////////////////////////////////////
+
+
 
 Class clsDataBase
   '-----------------------------------------------------------------------------
-  ' Private Variablen
+  ' Private variables
   '-----------------------------------------------------------------------------
 
   Private strStdDataPath
@@ -19,7 +31,7 @@ Class clsDataBase
 
 
   '-----------------------------------------------------------------------------
-  ' Private Methoden
+  ' Private methods
   '-----------------------------------------------------------------------------
 
   Private Sub Class_Initialize()
@@ -191,7 +203,7 @@ Class clsDataBase
   End Function
 
 
-  ' Für Debugging-Zwecke
+  ' For debugging purposes
   Private Sub HandleResults(ByRef objResultSet, ByVal intAffected)
     Dim objDbConnection, objCommand, objDbError, objParam
     Dim intItemCnt, intRecCnt
@@ -257,7 +269,7 @@ Class clsDataBase
 
 
   '-----------------------------------------------------------------------------
-  ' Private Properties
+  ' Private properties
   '-----------------------------------------------------------------------------
 
   Private Property Get DSNPath
@@ -282,7 +294,7 @@ Class clsDataBase
 
 
   '-----------------------------------------------------------------------------
-  ' Public Methoden
+  ' Public methods
   '-----------------------------------------------------------------------------
 
   Public Function Open
