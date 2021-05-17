@@ -12,7 +12,7 @@ Windows Registry Editor Version 5.00
 "Icon"="C:\\Windows\\system32\\AdminCmd.ico"
 
 [HKEY_CLASSES_ROOT\*\shell\OpenAdminConsoleHere\command]
-@="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"for /f \"delims=\" %%d in (\"%1\") do @cd /d \"%~dpd\"\"\""
+@="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%W\"\"\""
 
 [HKEY_CLASSES_ROOT\Directory\shell\OpenConsoleHere]
 @="Konsole hier öffnen"
