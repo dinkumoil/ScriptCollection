@@ -9,7 +9,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\*\shell\OpenAdminConsoleHere]
 @="Admin-Konsole hier öffnen"
-"Icon"="C:\\Windows\\system32\\AdminCmd.ico"
+"Icon"="C:\\Windows\\system32\\cmd.exe,0"
+"HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\*\shell\OpenAdminConsoleHere\command]
 @="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%W\"\"\""
@@ -23,7 +24,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\shell\OpenAdminConsoleHere]
 @="Admin-Konsole hier öffnen"
-"Icon"="C:\\Windows\\system32\\AdminCmd.ico"
+"Icon"="C:\\Windows\\system32\\cmd.exe,0"
+"HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\shell\OpenAdminConsoleHere\command]
 @="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%1\"\"\""
@@ -37,7 +39,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenAdminConsoleHere]
 @="Admin-Konsole hier öffnen"
-"Icon"="C:\\Windows\\system32\\AdminCmd.ico"
+"Icon"="C:\\Windows\\system32\\cmd.exe,0"
+"HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenAdminConsoleHere\command]
 @="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%V\"\"\""
@@ -51,7 +54,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Drive\shell\OpenAdminConsoleHere]
 @="Admin-Konsole hier öffnen"
-"Icon"="C:\\Windows\\system32\\AdminCmd.ico"
+"Icon"="C:\\Windows\\system32\\cmd.exe,0"
+"HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Drive\shell\OpenAdminConsoleHere\command]
 @="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%1\"\"\""
@@ -65,7 +69,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenAdminConsoleHere]
 @="Admin-Konsole hier öffnen"
-"Icon"="C:\\Windows\\system32\\AdminCmd.ico"
+"Icon"="C:\\Windows\\system32\\cmd.exe,0"
+"HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\LibraryFolder\background\shell\OpenAdminConsoleHere\command]
 @="\"C:\\Program Files (x86)\\Admin Tools\\hstart.exe\" /elevated \"cmd.exe /k \"cd /d \"%V\"\"\""

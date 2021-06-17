@@ -1,0 +1,10 @@
+1. Download HStart.exe from here:
+
+     https://www.ntwind.com/software/hstart.html
+
+
+2. Extract hstart.exe from the setup file. For extraction you can use 7-Zip.
+
+
+3. Create folder "%ProgramFiles(x86)%\Admin Tools" and copy the extracted
+   file to that folder.
