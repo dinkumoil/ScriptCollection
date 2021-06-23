@@ -343,7 +343,7 @@ Function FormatString(ByVal strString, ByRef arrItems)
     intPos = InStr(intStart, strString, strVar, vbTextCompare)
 
     If intPos > 0 Then
-      strString = Replace(strString, strVar, arrItems(intCnt), 1, 1, vbTextCompare)
+      strString = Replace(strString, strVar, arrItems(intCnt), 1, -1, vbTextCompare)
       intStart  = intPos + Len(arrItems(intCnt))
     End If
   Next
@@ -395,3 +395,22 @@ Function Quote(ByRef strString)
   Quote = """" & strString & """"
 End Function
 
+
+
+'===============================================================================
+' Surround a string with a pair of characters
+'===============================================================================
+
+Function Enclose(ByRef strString, ByRef strLeftString, ByRef strRightStr)
+  Enclose = strLeftString & strString & strRightStr
+End Function
+
+
+
+'===============================================================================
+' Escape special chars of string for use with WMI
+'===============================================================================
+
+Function EscapeForWMI(ByRef strAString)
+  EscapeForWMI = Replace(strAString, "\", "\\")
+End Function
