@@ -20,8 +20,8 @@ https://github.com/d0vgan/nppexec
             <Keywords name="Numbers, suffix1"></Keywords>
             <Keywords name="Numbers, suffix2"></Keywords>
             <Keywords name="Numbers, range"></Keywords>
-            <Keywords name="Operators1">= ~ == ~= != &lt;&gt; &gt; &lt; &gt;= &lt;= &gt;&gt; &lt;&lt; + - * / % ^ ( ) | &amp; ! || &amp;&amp; @</Keywords>
-            <Keywords name="Operators2"></Keywords>
+            <Keywords name="Operators1">= == ~= != &lt;&gt; &gt; &lt; &gt;= &lt;= &gt;&gt; &lt;&lt; + - * / % ^ ( ) | &amp; ! || &amp;&amp; @</Keywords>
+            <Keywords name="Operators2">~</Keywords>
             <Keywords name="Folders in code1, open"></Keywords>
             <Keywords name="Folders in code1, middle"></Keywords>
             <Keywords name="Folders in code1, close"></Keywords>
@@ -31,7 +31,7 @@ https://github.com/d0vgan/nppexec
             <Keywords name="Folders in comment, open"></Keywords>
             <Keywords name="Folders in comment, middle"></Keywords>
             <Keywords name="Folders in comment, close"></Keywords>
-            <Keywords name="Keywords1">about help &quot;help all&quot; manual ver cd chr clip_settext cls con_colour con_filter con_load con_loadfrom con_save con_saveto dir echo else endif env_set env_unset exit goto if inputbox label local messagebox normpath npe_cmdalias npe_console npe_debug npe_debuglog npe_noemptyvars npe_queue npe_sendmsgbuflen npp_close npp_console npp_exec npp_menucommand npp_open npp_run npp_save npp_saveall npp_saveas npp_sendmsg npp_sendmsgex npp_setfocus npp_switch ord ordx proc_signal sci_find sci_replace sci_sendmsg sel_load sel_loadfrom sel_save sel_saveto sel_settext sel_settext+ set set_env sleep strfind strfromhex strlen strlens strlensci strlenu strlenutf8 strlower strreplace strrfind strquote strtohex strunquote strupper substr text_load text_loadfrom text_save text_saveto then unset unset_env abs acos acosh arg asin asinh atan atan2 atanh cbrt ceil conj cos cosh cot csc eval exp exp2 floor hypot if imag int log log10 log2 max min polar pow real sec sin sinh sqrt tan tanh trunc</Keywords>
+            <Keywords name="Keywords1">about help &quot;help all&quot; manual ver cd chr clip_settext cls con_colour con_filter con_load con_loadfrom con_save con_saveto dir echo else endif env_set env_unset exit goto if if~ inputbox label local messagebox normpath npe_cmdalias npe_console npe_debug npe_debuglog npe_noemptyvars npe_queue npe_sendmsgbuflen npp_close npp_console npp_exec npp_menucommand npp_open npp_run npp_save npp_saveall npp_saveas npp_sendmsg npp_sendmsgex npp_setfocus npp_switch ord ordx proc_signal sci_find sci_replace sci_sendmsg sel_load sel_loadfrom sel_save sel_saveto sel_settext sel_settext+ set set_env sleep strescape strexpand strfind strfromhex strlen strlens strlensci strlenu strlenutf8 strlower strreplace strrfind strquote strtohex strunescape strunquote strupper substr text_load text_loadfrom text_save text_saveto then unset unset_env abs acos acosh arg asin asinh atan atan2 atanh cbrt ceil conj cos cosh cot csc eval exp exp2 floor hypot if imag int log log10 log2 max min polar pow real sec sin sinh sqrt tan tanh trunc</Keywords>
             <Keywords name="Keywords2">ctrl ctrlc ctrlbreak break wm_close wmclose disable enable keep off on con sci fg bg a d f h m p q r s v x e0 e1 fr1 fr2 fr3 fr4 frc1 frc2 frc3 frc4 h1 h2 h3 h4 h5 h6 h7 h8 h9 h10 i0 i1 i2 i3 i4 i5 k0 k1 k2 k3 o0 o1 o2 x1 x2 x3 x4 x5 y0 y1 y2</Keywords>
             <Keywords name="Keywords3">::</Keywords>
             <Keywords name="Keywords4">: nppexec: nppexec::</Keywords>
