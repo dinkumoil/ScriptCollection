@@ -257,7 +257,7 @@ local function selectionAddAll()
 end
 
 
--- Add menu entry 
+-- Add menu entry
 npp.AddShortcut("Selection Add All", "", function()
   selectionAddAll()
 end)
@@ -311,7 +311,7 @@ local function selectionAddNext()
 end
 
 
--- Add menu entry 
+-- Add menu entry
 npp.AddShortcut("Selection Add Next", "", function()
   selectionAddNext()
 end)
@@ -367,7 +367,7 @@ local function selectionSkipCurrent()
 end
 
 
--- Add menu entry 
+-- Add menu entry
 npp.AddShortcut("Selection Skip Current", "", function()
   selectionSkipCurrent()
 end)
@@ -394,7 +394,7 @@ local function selectionRemoveCurrent()
 end
 
 
--- Add menu entry 
+-- Add menu entry
 npp.AddShortcut("Selection Remove Current", "", function()
   selectionRemoveCurrent()
 end)
@@ -447,9 +447,79 @@ local function selectMarked()
 end
 
 
--- Add menu entry 
+-- Add menu entry
 npp.AddShortcut("Select Marked", "", function()
   selectMarked()
+end)
+
+
+
+-- =============================================================================
+-- Emulation of SCI_DOCUMENTENDRECTEXTEND
+-- =============================================================================
+
+local function documentEndRectExtend()
+  local endLine
+  local selStartPos, selEndPos
+  local selStartCol, selEndCol
+
+  endLine     = editor.LineCount - 1
+  selStartPos = editor.CurrentPos
+  selStartCol = editor.Column[selStartPos]
+
+  while true do
+    selEndPos = editor:FindColumn(endLine, selStartCol)
+    if selEndPos <= selStartPos then return end
+
+    selEndCol = editor.Column[selEndPos]
+    if selEndCol == selStartCol then break end
+
+    endLine = endLine - 1
+  end
+
+  editor.RectangularSelectionAnchor = selStartPos
+  editor.RectangularSelectionCaret  = selEndPos
+end
+
+
+-- Add menu entry
+npp.AddShortcut("Column Selection to Document End", "", function()
+  documentEndRectExtend()
+end)
+
+
+
+-- =============================================================================
+-- Emulation of SCI_DOCUMENTSTARTRECTEXTEND
+-- =============================================================================
+
+local function documentStartRectExtend()
+  local endLine
+  local selStartPos, selEndPos
+  local selStartCol, selEndCol
+
+  endLine     = 0
+  selStartPos = editor.CurrentPos
+  selStartCol = editor.Column[selStartPos]
+
+  while true do
+    selEndPos = editor:FindColumn(endLine, selStartCol)
+    if selEndPos >= selStartPos then return end
+
+    selEndCol = editor.Column[selEndPos]
+    if selEndCol == selStartCol then break end
+
+    endLine = endLine + 1
+  end
+
+  editor.RectangularSelectionAnchor = selStartPos
+  editor.RectangularSelectionCaret  = selEndPos
+end
+
+
+-- Add menu entry
+npp.AddShortcut("Column Selection to Document Start", "", function()
+  documentStartRectExtend()
 end)
 
 
