@@ -61,7 +61,7 @@ End Function
 
 Sub RunElevated(ByRef strCommand, ByRef strWorkFolder, ByVal intShowState, ByRef arrParams)
   Dim objShell
-  Dim intCnt, strArguments
+  Dim intCnt, strParam, strArguments
 
   Set objShell = CreateObject("Shell.Application")
   strArguments = ""
