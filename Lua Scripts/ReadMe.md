@@ -7,7 +7,8 @@ This is a collection of scripts for the _Lua Script_ plugin for Notepad++. To us
 * `selectionAddAll`  -  Select all occurences of word under the caret/currently selected word.
 * `selectionAddNext`  - Add next occurence of word under caret/currently selected word to selection.
 * `selectionSkipCurrent`  -  Remove word under caret/currently selected word from selection and advance to its next occurence.
+* `selectionRemoveCurrent`  -  Only remove word under caret/currently selected word from selection, do not advance.
 * `selectMarked`  -  Select all items marked by find marks.
-* `documentStartRectExtend`  -  Emulation of Scintilla function "SCI_DOCUMENTSTARTRECTEXTEND" contained in recent Scintilla versions.
-* `documentEndRectExtend`  -  Emulation of Scintilla function "SCI_DOCUMENTENDRECTEXTEND" contained in recent Scintilla versions.
+* `documentEndRectExtend`  -  Create column selection to last line of file.
+* `documentStartRectExtend`  -  Create column selection to first line of file.
 * `getLinePositions`, `autoIndent_OnChar`, `autoIndent_OnUpdateUI` and `checkAutoIndent`  -  Provide auto-indentation for Lua language.
