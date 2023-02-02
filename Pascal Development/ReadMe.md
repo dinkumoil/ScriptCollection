@@ -2,7 +2,7 @@
 
 The files in this directory provide function list parsers for Notepad++. After installing these files you will be able to use the function list panel of Notepad++ to navigate through your code files.
 
-* The file `pascal.xml` provides a function list parser for _Pascal/Delphi_ source code files.
+* The files `pascal_old.xml` and `pascal_new.xml` provide function list parsers for _Pascal/Delphi_ source code files. For the difference of these files see the notes below.
 * The file `delphiForm.xml` provides a function list parser for _Delphi_ forms files, i.e. `*.dfm` files.
 
 **Please note:** The parsers may have issues and thus may not work always as expected. I will **not react** to bug reports but fixes are welcome. If you find some unwanted behaviour please fix it by yourself and file a pull request.
