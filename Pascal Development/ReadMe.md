@@ -12,7 +12,7 @@ The files in this directory provide function list parsers for Notepad++. After i
 
 ### _Pascal/Delphi_ function list parser
 
-**Please note:** There are two versions of this parser, one for Notepad++ version up to v8.4.8 and one for version v8.4.9 and above. You should use these parsers only with the recommended Notepad++ versions (see installation instuctions below)! Due to some bugs in older versions of Notepad++ the new parser may not work reliable or cause Notepad++ to hang when used with unsuitable versions.
+**Please note:** There are two versions of this parser, one for Notepad++ versions up to v8.4.8 and one for version v8.4.9 and above. You should use these parsers only with the recommended Notepad++ versions (see installation instructions below)! Due to some bugs in older versions of Notepad++ the new parser may not work reliable or cause Notepad++ to hang when used with unsuitable versions.
 
 The following steps depend on the version of Notepad++ you use.
 
@@ -62,6 +62,6 @@ When you are done with installing the UDL, you can install the function list par
 1. **a) If you use an installed version of Notepad++:** Open your user profile folder and navigate to folder `AppData\Roaming\Notepad++`. If the `AppData` folder is not shown in your user profile folder, you need to go to the Windows Explorer folder options and enable the display of hidden files and folders.
    **b) If you use a portable version of Notepad++:** Open the folder where your `notepad++.exe` resides.
 2. Open folder `functionList` and move the file `delphiForm.xml` to this folder.
-3. In folder `functionList`, open file `overrideMap.xml` with Notepad++.
+3. In folder `functionList` open file `overrideMap.xml` with Notepad++.
 4. In file `overrideMap.xml` go to XML node `/NotepadPlus/functionList/associationMap`. There you will find XML nodes like `<association id="xxx.xml" userDefinedLangName="xxx" />`.
 5. Add a new node like this: `<association id="delphiForm.xml" userDefinedLangName="Delphi Form" />`
