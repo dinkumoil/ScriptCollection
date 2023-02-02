@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ==========================================================================\
+|
+|   To learn how to make your own language parser, please check the following
+|   link:
+|       https://npp-user-manual.org/docs/function-list/
+|
+\=========================================================================== -->
+<NotepadPlus>
+	<functionList>
+		<!-- =============================================== [ Delphi Form ] -->
+
+		<parser
+			displayName="Delphi Form"
+			id         ="dfm_syntax"
+			commentExpr="(?x)                                                                      # Utilize inline comments (see `RegEx - Pattern Modifiers`)
+						"
+		>
+			<classRange
+				mainExpr="(?x)                                                                     # Utilize inline comments (see `RegEx - Pattern Modifiers`)
+						 "
+			>
+				<className>
+					<nameExpr expr="(?i)" />
+					<nameExpr expr="(?i)" />
+					<nameExpr expr="(?i)" />
+				</className>
+				<function
+					mainExpr="(?x)                                                                 # Utilize inline comments (see `RegEx - Pattern Modifiers`)
+							 "
+				>
+					<functionName>
+						<funcNameExpr expr="(?i)" />
+					</functionName>
+				</function>
+			</classRange>
+			<function
+				mainExpr="(?x)                                                                     # Utilize inline comments (see `RegEx - Pattern Modifiers`)
+						  (?im-s)                                                                  # multi-line mode on, single-line mode off
+						  ^\h*                                                                     # optional leading whitespace
+						  (?:
+							  (?:OBJECT|INHERITED|INLINE)\s+                                       # object
+							  ([A-Z_]\w*)                                                          #  name
+							  \s*:                                                                 #  delimiter
+						  )
+						  .*$                                                                      # remaining line
+						 "
+			>
+				<functionName>
+					<nameExpr expr="(?i)(?:(OBJECT|INHERITED|INLINE)\s+)\K(?:[A-Z_]\w*)(?:\s*:.*$)" />
+					<nameExpr expr="(?i)(?:[A-Z_]\w*)(?=\s*:)" />
+				</functionName>
+			</function>
+		</parser>
+	</functionList>
+</NotepadPlus>

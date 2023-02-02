@@ -79,7 +79,7 @@ These scripts allow to manage plugins for Notepad++. The benefit over using Note
 
 ## Pascal Development
 
-The file in this directory provides a function list parser for Notepad++ for Pascal and derived languages like _Delphi_ and _Free Pascal_.
+The files in this directory provide function list parsers for Notepad++. There is a parser for source code files of Pascal and derived languages like _Delphi_ and _Free Pascal_ and a parser for _Delphi_ forms (i.e. `*.dfm`) files.
 
 
 ## SetSQLServerFirewallRules
