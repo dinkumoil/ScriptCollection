@@ -13,5 +13,6 @@ This is a collection of VBScript classes, utility functions and OS constants.
 * `ClassFileVersionInfo.vbs`  -  Retrieve file version informations from EXE and DLL files
 * `ClassIniFile.vbs`  -  Working with INI files (read, write, update)
 * `ClassJsonFile.vbs`  -  Working with JSON files (read, write, update)
+* `ClassXmlFile.vbs`  -  Working with XML files (read, write, update)
 * `ClassRegistry.vbs`  -  Working with the Windows registry (read, write, update). Enables access to 64 bit registry hives from a 32 bit process.
 * `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, Kölner Phonetic, Levenshtein distance)

@@ -142,6 +142,25 @@ End Function
 
 
 '===============================================================================
+' Generates a unique filename
+' Parameter strNamePattern must contain a template for the filename including
+' a place holder for a random number
+'===============================================================================
+
+Dim bolPRNGInitialized
+
+Function GetUniqueFileName(ByRef strNamePattern)
+  If Not bolPRNGInitialized Then
+    Randomize
+    bolPRNGInitialized = True
+  End If
+
+  GetUniqueFileName = FormatString(strNamePattern, Array(Int(Abs((1 + Rnd) * 1000000))))
+End Function
+
+
+
+'===============================================================================
 ' Sort an array between the provided indices using Quicksort
 '===============================================================================
 
@@ -383,6 +402,92 @@ Function IsBareFileName(ByRef strPath)
 
   IsBareFileName = (objFSO.GetParentFolderName(strPath) = "" And _
                     UBound(Filter(Array("\", "/"), Left(strPath, 1))) < 0)
+End Function
+
+
+
+'===============================================================================
+' Convert DateTime value to time stamp in ISO-8601 format
+'===============================================================================
+
+Function DateTimeToISO8601(ByRef datDateTime)
+  Dim objXmlDoc, objNode, objDateTime
+  Dim strSign, strTZBias
+
+  Set objXmlDoc              = CreateObject("Microsoft.XMLDOM")
+  objXmlDoc.async            = False
+  objXmlDoc.validateOnParse  = False
+  objXmlDoc.resolveExternals = False
+
+  Set objNode                = objXmlDoc.createElement("TimeStamp")
+  objXmlDoc.appendChild objNode
+
+  objNode.dataType           = "datetime"
+  objNode.nodeTypedValue     = datDateTime
+  objNode.dataType           = ""
+
+  Set objDateTime            = CreateObject("WbemScripting.SWbemDateTime")
+  objDateTime.SetVarDate datDateTime, True
+
+  If objDateTime.UTC >= 0 Then
+    strSign = "+"
+  Else
+    strSign = "-"
+  End If
+  
+  strTZBias = Right("0" & Abs(Int(objDateTime.UTC / 60)), 2) & ":" &  Right("0" & Abs(objDateTime.UTC mod 60), 2)
+  
+  DateTimeToISO8601 = objNode.text & strSign & strTZBias
+End function
+
+
+
+'===============================================================================
+' Convert time stamp in ISO-8601 format to DateTime value
+'===============================================================================
+
+Function ISO8601ToDateTime(ByVal strDateTime, bolAsUTC)
+  Dim objXmlDoc, objNode, strUTC, strUTCSign, strTZBias
+
+  Set objXmlDoc              = CreateObject("Microsoft.XMLDOM")
+  objXmlDoc.async            = False
+  objXmlDoc.validateOnParse  = False
+  objXmlDoc.resolveExternals = False
+
+  Set objNode                = objXmlDoc.createElement("TimeStamp")
+  objXmlDoc.appendChild objNode
+
+  strUTC                     = Right(strDateTime, 5)
+  strUTCSign                 = Mid(strDateTime, Len(strDateTime) - 6, 1)
+  intTZBias                  = CInt(Left(strUTC, 2)) * 60 + CInt(Right(strUTC, 2))
+  strDateTime                = Left(strDateTime, Len(strDateTime) - 6)
+
+  objNode.text               = strDateTime
+  objNode.dataType           = "datetime"
+
+  If Not bolAsUTC Then
+    ISO8601ToDateTime = objNode.nodeTypedValue
+  Else
+    ISO8601ToDateTime = DateAdd("n", CInt(strUTCSign & intTZBias) * -1, objNode.nodeTypedValue)
+  End If
+End Function
+
+
+
+'===============================================================================
+' Decode a string containing HTML entities
+'===============================================================================
+
+Function HtmlDecode(ByRef strInString)
+  Dim objHtmlDoc
+
+  Set objHtmlDoc = CreateObject("htmlfile")
+
+  objHtmlDoc.Open
+  objHtmlDoc.Write strInString
+  objHtmlDoc.Close
+
+  HtmlDecode = objHtmlDoc.body.innerText
 End Function
 
 
