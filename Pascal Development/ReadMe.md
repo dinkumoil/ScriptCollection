@@ -12,7 +12,7 @@ The files in this directory provide function list parsers for Notepad++. After i
 
 ### _Pascal/Delphi_ function list parser
 
-**Please note:** You should use this parser only with Notepad++ versions from v8.4.9 onwards! Due to some bugs in older versions of Notepad++ this parser may not work reliable or cause Notepad++ to hang.
+**Please note:** There are two versions of this parser, one for Notepad++ version up to v8.4.8 and one for version v8.4.9 and above. You should use these parsers only with the recommended Notepad++ versions (see installation instuctions below)! Due to some bugs in older versions of Notepad++ the new parser may not work reliable or cause Notepad++ to hang when used with unsuitable versions.
 
 The following steps depend on the version of Notepad++ you use.
 
