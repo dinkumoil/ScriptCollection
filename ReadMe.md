@@ -10,6 +10,11 @@ This repository is a collection of (maybe) useful scripts I wrote over the years
 Loads CSV files with MS Excel, formats all columns as text and fits the column widths to their content. Greatly simplifies viewing of CSV files.
 
 
+## CombineFiles
+
+A small script that is able to merge the content of two files line by line into an output file.
+
+
 ## Cut
 
 A small script that provides the functionality of the UNIX `cut` tool with plain Windows Batch script.
