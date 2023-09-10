@@ -1,0 +1,9 @@
+# Windows thumbnail cache
+[Tt]humbs.db
+
+# Backups
+~*.*
+*.~*
+
+# Executables
+*.exe
