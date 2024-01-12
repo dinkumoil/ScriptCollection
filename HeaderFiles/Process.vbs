@@ -248,3 +248,42 @@ Function ExecAndCapture(ByRef strCommand, ByRef arrParams, ByRef strOutput)
 
   ExecAndCapture = objExec.ExitCode
 End Function
+
+
+
+'===============================================================================
+' Retrieve PID of the process that has run this script
+'===============================================================================
+
+Function GetParentProcessPID(ByRef strExecutablePath)
+  Dim objWshShell, objWshExec
+  Dim objIndicatorProcess, objCurProcess
+  Dim strWMIQuery, strCurProcessPath, intCurProcessId
+
+  Set objWshShell = CreateObject("WScript.Shell")
+  strWMIQuery     = "winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2:Win32_Process.Handle="
+
+  Set objWshExec          = objWshShell.Exec("rundll32 kernel32,Sleep")
+  Set objIndicatorProcess = GetObject(strWMIQuery & objWshExec.ProcessId)
+  Set objCurProcess       = objIndicatorProcess
+  strCurProcessPath       = ""
+
+  Do
+    On Error Resume Next
+    Set objCurProcess = GetObject(strWMIQuery & objCurProcess.ParentProcessId)
+    On Error GoTo 0
+
+    If Err.Number <> 0 Then Exit Do
+    
+    intCurProcessId    = objCurProcess.ProcessId
+    strCurProcessPath  = objCurProcess.ExecutablePath
+  Loop Until StrComp(strCurProcessPath, strExecutablePath, vbTextCompare) = 0
+
+  objIndicatorProcess.Terminate
+
+  If StrComp(strCurProcessPath, strExecutablePath, vbTextCompare) = 0 Then
+    GetParentProcessPID = intCurProcessId
+  Else
+    GetParentProcessPID = -1
+  End	If
+End Function
