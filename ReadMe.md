@@ -39,6 +39,11 @@ This directory contains three Windows Explorer context menu extensions:
 This script provides a file selector written in native Windows Batch script. You can browse your hard disk(s) in a console window and select a file or folder. It is also possible to create and delete files and folders by means of a _Tools_ menu. A demo script that shows how to use the _FileSelector_ is included.
 
 
+## GetDayOfWeek
+
+This script determines the day of the week of a specific date. The date can be provided via command line or stdin. The day of the week can be displayed in numerical form, as german or english abbreviation or with its full german or english name.
+
+
 ## GetSysTimes
 
 This folder contains two Batch scripts to
