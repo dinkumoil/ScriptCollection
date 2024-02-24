@@ -1,7 +1,7 @@
 '///////////////////////////////////////////////////////////////////////////////
 '
 ' Header file for handling *.json files (create, read, update)
-' Implemented as Finite State Machine
+' Implemented as deterministic pushdown automaton
 '
 ' Author: Andreas Heim
 ' Date: 30.06.2016

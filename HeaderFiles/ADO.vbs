@@ -58,7 +58,7 @@ Const adCmdTableDirect = 512  'Evaluates CommandText as a table name whose colum
 'Command dialects for SQLOLEDB provider
 Const adCmdDialectTSql        = "{C8B521FB-5CF3-11CE-ADE5-00AA0044773D}"  'Transact-SQL query
 Const adCmdDialectXMLTemplate = "{5D531CB2-E6Ed-11D2-B252-00C04F681B71}"  'XML template query
-Const adCmdDialectXPath       = "{EC2A4293-E898-11D2-B1B7-00C04F680C56}"  'XPath query 
+Const adCmdDialectXPath       = "{EC2A4293-E898-11D2-B1B7-00C04F680C56}"  'XPath query
 
 
 'Stream types

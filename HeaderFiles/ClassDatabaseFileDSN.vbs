@@ -218,19 +218,19 @@ Class clsDataBase
 
       If objResultSet.State <> adStateClosed Then
         intRecCnt = 0
-        
+
         Do While Not objResultSet.EOF
           intRecCnt = intRecCnt + 1
           strLine   = ""
-          
+
           For intIdx = 0 To objResultSet.Fields.Count - 1
             strLine = strLine & " | " & objResultSet(intIdx)
           Next
-          
+
           WScript.Echo strLine
           objResultSet.MoveNext
         Loop
-        
+
         WScript.Echo "Item " & intItemCnt & ": Recordset has " & intRecCnt & " records and " & objResultSet.Fields.Count & " fields."
 
       ElseIf objDbConnection.Errors.Count > 0 Then

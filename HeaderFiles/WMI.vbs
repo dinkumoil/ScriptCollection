@@ -251,7 +251,7 @@ Const wbemQueryFlagPrototype                = 2
 Const wbemTextFlagNoFlavors                 = 1
 
 ' WbemTimeout
-Const wbemTimeoutInfinite                   = -1
+Const wbemTimeoutInfinite                   = &hFFFFFFFF
 
 ' WbemConnectOptions
 Const wbemConnectFlagUseMaxWait             = 128

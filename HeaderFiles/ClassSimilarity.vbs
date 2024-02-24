@@ -335,9 +335,9 @@ Class clsSimilarity
   End Function
 
 
-  ' ~~~~~~~~~~~~~~~~~~~
-  ' Levenshtein Distanz
-  ' ~~~~~~~~~~~~~~~~~~~
+  ' ~~~~~~~~~~~~~~~~~~~~
+  ' Levenshtein Distance
+  ' ~~~~~~~~~~~~~~~~~~~~
   Public Function LevenshteinDistance(ByVal strString1, ByVal strString2, bolIgnoreCase)
     Dim intCost, intL1, intL2, intTMin
     Dim arrDistance, intRow, intCol
