@@ -4,10 +4,6 @@ This script determines the day of the week of a specific date. The date can be p
 
 The code is based on the algorithm of german mathematician Christian Zeller named [_Zeller's congruence_](https://en.wikipedia.org/wiki/Zeller%27s_congruence). It uses the Gregorian calendar variant for calculating the day of the week.
 
-Gibt den DoW (Tag der Woche) als numerischen Wert, englische oder deutsche
-Abkürzung oder mit vollständigem englischem oder deutschem Namen aus.
-Die Berechnung erfolgt nach dem Gregorianischen Kalender, gültig ab
-Freitag, dem 15.10.1582.
 
 ## Translation of the script's help
 
