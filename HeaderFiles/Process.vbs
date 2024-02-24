@@ -39,6 +39,90 @@ Const ANSICodePage = "windows-1252"
 
 
 '===============================================================================
+' Retrieve bitness of OS
+'===============================================================================
+
+Function GetOSBitness
+  GetOSBitness = CInt(GetObject("winmgmts:root\cimv2:Win32_Processor='cpu0'").AddressWidth)
+End Function
+
+
+
+'===============================================================================
+' Retrieve bitness of Script Host process
+'===============================================================================
+
+Function GetScriptHostBitness
+  If GetOSBitness = 32 Then
+    GetScriptHostBitness = 32
+  ElseIf InStr(1, WScript.Path, "SysWOW64", vbTextCompare) > 0 Then
+    GetScriptHostBitness = 32
+  Else
+    GetScriptHostBitness = 64
+  End If
+End Function
+
+
+
+'===============================================================================
+' Tells if script runs under console or GUI context
+'===============================================================================
+
+Function IsConsoleApp
+  IsConsoleApp = (InStr(1, WScript.FullName, "cscript.exe", vbTextCompare) > 0)
+End Function
+
+
+
+'===============================================================================
+' Ensures that the script runs in console mode
+'===============================================================================
+
+Sub EnsureConsoleMode
+  Dim objFSO
+  Dim strScriptHostPath, strCommandLine
+
+  If Not IsConsoleApp Then
+    Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+    strScriptHostPath = objFSO.BuildPath(WScript.Path, "cscript.exe")
+    strCommandLine    = strScriptHostPath & " /nologo """ & WScript.ScriptFullName & """ & pause"
+
+    Call ExecCommand("cmd.exe", Array("/c ", strCommandLine), "", SW_SHOWNORMAL, False)
+    WScript.Quit
+  End If
+End Sub
+
+
+
+'===============================================================================
+' Ensures that the script runs in console mode as a 32 bit process
+'===============================================================================
+
+Sub EnsureConsoleMode32Bit
+  Dim objFSO, objShell
+  Dim strScriptHostPath, strCommandLine
+
+  If Not IsConsoleApp Then
+    Set objFSO   = CreateObject("Scripting.FileSystemObject")
+    Set objShell = CreateObject("WScript.Shell")
+
+    If GetScriptHostBitness = 32 Then
+      strScriptHostPath = objFSO.BuildPath(WScript.Path, "cscript.exe")
+    Else
+      strScriptHostPath = objFSO.BuildPath(objShell.ExpandEnvironmentStrings("%SystemRoot%\SysWOW64"), "cscript.exe")
+    End If
+
+    strCommandLine = strScriptHostPath & " /nologo """ & WScript.ScriptFullName & """ & pause"
+
+    Call ExecCommand("cmd.exe", Array("/c ", strCommandLine), "", SW_SHOWNORMAL, False)
+    WScript.Quit
+  End If
+End Sub
+
+
+
+'===============================================================================
 ' Check if script runs with elevated user rights
 '===============================================================================
 
@@ -215,12 +299,13 @@ End Function
 ' Execute a command synchronously and capture its output
 '===============================================================================
 
-Function ExecAndCapture(ByRef strCommand, ByRef arrParams, ByRef strOutput)
+Function ExecAndCapture(ByRef strCommand, ByRef arrParams, ByRef strStdOutOutput, ByRef strStdErrOutput)
   Dim objWshShell, objExec
   Dim strParam, strArguments, intCnt, strLine
 
-  strOutput    = ""
-  strArguments = ""
+  strStdOutOutput = ""
+  strStdErrOutput = ""
+  strArguments    = ""
 
   For intCnt = 0 To UBound(arrParams)
     strParam = Trim(arrParams(intCnt))
@@ -236,17 +321,29 @@ Function ExecAndCapture(ByRef strCommand, ByRef arrParams, ByRef strOutput)
   Set objExec     = objWshShell.Exec(Quote(strCommand) & " " & strArguments)
 
   Do While Not objExec.StdOut.AtEndOfStream
-    strLine   = objExec.StdOut.ReadLine
-    strOutput = strOutput & vbCrLf & strLine
+    strLine         = objExec.StdOut.ReadLine
+    strStdOutOutput = strStdOutOutput & strLine & vbCrLf
   Loop
 
-  strOutput = ConvertEncoding(strOutput, OEMCodePage, ANSICodePage)
+  Do While Not objExec.StdErr.AtEndOfStream
+    strLine         = objExec.StdErr.ReadLine
+    strStdErrOutput = strStdErrOutput & strLine & vbCrLf
+  Loop
+
+  strStdOutOutput = ConvertEncoding(strStdOutOutput, OEMCodePage, ANSICodePage)
+  strStdErrOutput = ConvertEncoding(strStdErrOutput, OEMCodePage, ANSICodePage)
 
   Do While objExec.Status = 0
     WScript.Sleep 100
   Loop
 
-  ExecAndCapture = objExec.ExitCode
+  If objExec.ExitCode <> 0 Then
+    ExecAndCapture = objExec.ExitCode
+  ElseIf strStdErrOutput = "" Then
+    ExecAndCapture = objExec.ExitCode
+  Else
+    ExecAndCapture = -1
+  End If
 End Function
 
 
@@ -274,7 +371,7 @@ Function GetParentProcessPID(ByRef strExecutablePath)
     On Error GoTo 0
 
     If Err.Number <> 0 Then Exit Do
-    
+
     intCurProcessId    = objCurProcess.ProcessId
     strCurProcessPath  = objCurProcess.ExecutablePath
   Loop Until StrComp(strCurProcessPath, strExecutablePath, vbTextCompare) = 0
