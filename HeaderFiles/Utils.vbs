@@ -323,6 +323,72 @@ End Function
 
 
 '===============================================================================
+' Merges the contents of two arrays by adding the elements of the first array at
+' the end of the second array
+'===============================================================================
+
+Function Merge(ByRef arrLeft, ByRef arrRight)
+  Dim intIdx, arrOutput
+
+  If IsArray(arrLeft) And IsArray(arrRight) Then
+    ReDim arrOutput(UBound(arrLeft) + UBound(arrRight) + 1)
+
+    For intIdx = 0 To UBound(arrLeft)
+      If IsObject(arrLeft(intIdx)) Then
+        Set arrOutput(intIdx) = arrLeft(intIdx)
+      Else
+        arrOutput(intIdx) = arrLeft(intIdx)
+      End If
+    Next
+
+    For intIdx = 0 To UBound(arrRight)
+      If IsObject(arrRight(intIdx)) Then
+        Set arrOutput(intIdx + UBound(arrLeft) + 1) = arrRight(intIdx)
+      Else
+        arrOutput(intIdx + UBound(arrLeft) + 1) = arrRight(intIdx)
+      End If
+    Next
+
+    Merge = arrOutput
+  Else
+    Merge = Null
+  End If
+End Function
+
+
+
+'===============================================================================
+' Creates a dictionary from two arrays by using the elements of the first array
+' as keys and the elements of the second array as values
+'===============================================================================
+
+Function Combine(ByRef arrKeys, ByRef arrValues)
+  Dim intMaxIdx, intIdx, dicOutput
+
+  If IsArray(arrKeys) And IsArray(arrValues) Then
+    intMaxIdx = UBound(arrKeys)
+
+    If intMaxIdx > UBound(arrValues) Then
+      intMaxIdx = UBound(arrValues)
+    End If
+
+    Set dicOutput = CreateObject("Scripting.Dictionary")
+
+    For intIdx = 0 To intMaxIdx
+      If Not dicOutput.Exists(arrKeys(intIdx)) Then
+        Call dicOutput.Add(arrKeys(intIdx), arrValues(intIdx))
+      End If
+    Next
+
+    Set Combine = dicOutput
+  Else
+    Set Combine = Nothing
+  End If
+End Function
+
+
+
+'===============================================================================
 ' Remove consecutive duplicate elements from an input array (within the provided
 ' range) and write the remaining elements to an output array
 '===============================================================================
@@ -434,9 +500,9 @@ Function DateTimeToISO8601(ByRef datDateTime)
   Else
     strSign = "-"
   End If
-  
+
   strTZBias = Right("0" & Abs(Int(objDateTime.UTC / 60)), 2) & ":" &  Right("0" & Abs(objDateTime.UTC mod 60), 2)
-  
+
   DateTimeToISO8601 = objNode.text & strSign & strTZBias
 End function
 
