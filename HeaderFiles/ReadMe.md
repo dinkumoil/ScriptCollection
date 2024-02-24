@@ -17,3 +17,4 @@ This is a collection of VBScript classes, utility functions and OS constants.
 * `ClassRegistry.vbs`  -  Working with the Windows registry (read, write, update). Enables access to 64 bit registry hives from a 32 bit process.
 * `ClassSimilarity.vbs`  -  Phonetical comparison (SoundEx, Kölner Phonetic, Levenshtein distance)
 * `ClassTable.vbs`  -  Storing data that is about to be displayed in a tableized form
+* `ClassUniversalInOut.vbs`  -  Generic input and output routines that can be called in both console and GUI Script Host modes
