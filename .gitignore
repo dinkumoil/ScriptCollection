@@ -7,3 +7,6 @@
 
 # Executables
 *.exe
+
+# Relevant for development only
+_ssh/
