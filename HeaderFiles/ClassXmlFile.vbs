@@ -58,6 +58,8 @@ Class clsXmlFile
 
   Private strEncoding
   Private strStandalone
+  Private strNamespaces
+
   Private intIndentSize
   Private intPrettyPrintType
   Private intLastError
@@ -115,6 +117,7 @@ Class clsXmlFile
   Private Sub Init
     strEncoding   = "utf-8"
     strStandalone = "yes"
+    strNamespaces = ""
 
     Set objFSO = CreateObject("Scripting.FileSystemObject")
 
@@ -348,6 +351,24 @@ Class clsXmlFile
 
 
   '-----------------------------------------------------------------------------
+  'Get/Set namespaces of currently loaded XML data. Namespaces must be given as
+  'space-separated list in the form of "xmlns:<namespace alias>='<namespace id'"
+  '-----------------------------------------------------------------------------
+  Public Property Get Namespaces
+    Namespaces = strNamespaces
+  End Property
+
+
+  Public Property Let Namespaces(strValue)
+    strNamespaces = strValue
+
+    If Not objXmlDoc Is Nothing Then
+      Call objXmlDoc.setProperty("SelectionNamespaces", strNameSpaces)
+    End If
+  End Property
+
+
+  '-----------------------------------------------------------------------------
   'Get/Set pretty-printing method
   '-----------------------------------------------------------------------------
   Public Property Get PrettyPrintType
@@ -417,6 +438,11 @@ Class clsXmlFile
 
     If Not objAttr Is Nothing Then
       strStandalone = objAttr.nodeValue
+    End If
+
+    'Set namespaces to be able to query XML nodes that are defined in namespaces
+    If strNamespaces <> "" Then
+      Call objXmlDoc.setProperty("SelectionNamespaces", strNameSpaces)
     End If
 
     'Return success
