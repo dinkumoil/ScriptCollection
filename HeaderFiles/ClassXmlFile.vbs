@@ -440,11 +440,6 @@ Class clsXmlFile
       strStandalone = objAttr.nodeValue
     End If
 
-    'Set namespaces to be able to query XML nodes that are defined in namespaces
-    If strNamespaces <> "" Then
-      Call objXmlDoc.setProperty("SelectionNamespaces", strNameSpaces)
-    End If
-
     'Return success
     intLastError = ERR_NO_ERROR
     LoadFromFile = True
